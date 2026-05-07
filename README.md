@@ -1,39 +1,28 @@
-# NorConsi – GitHub Pages
+# NorConsi – GitHub Pages-versjon
 
 Dette er en ren statisk nettside som kan publiseres direkte på GitHub Pages.
 
 ## Publisering
 
-Pakk ut ZIP-filen og legg innholdet i repo-roten, eller i `/docs` dersom GitHub Pages er satt til å publisere fra `/docs`.
+Pakk ut ZIP-filen og legg filene direkte i publish-mappen for GitHub Pages. Dersom Pages er satt til `root`, skal `index.html`, `roadmap.html`, `app.js`, `.nojekyll` og `assets/` ligge direkte i repo-roten. Dersom Pages er satt til `/docs`, skal de samme filene ligge direkte i `/docs`.
 
-Viktig: Ikke last opp ZIP-filen alene. GitHub Pages må se `index.html`, `app.js`, `.nojekyll` og `assets/` direkte i publish-mappen.
+## Roadmap
 
-## Dynamisk roadmap
-
-`roadmap.html` inneholder roadmap-data som JavaScript-objektet `window.NC_ROADMAP`.
-`app.js` bygger roadmap-visningen dynamisk i nettleseren.
+Roadmap-siden er dynamisk, men bruker kun vanlig HTML, CSS og JavaScript. Den trenger derfor ingen backend, database eller Node-server.
 
 Funksjoner:
 
+- dynamiske statuskort
 - søk i roadmap
-- filtrering på fase, tema og status
-- fasevis eller kompakt visning
-- fremdriftskort
-- lokale avhukinger for ferdige milepæler via nettleserens localStorage
+- filter på status, tema og fase
+- kompakt/fasevis visning
+- lokale avhukinger for fullførte milepæler via `localStorage`
+- cache-busting på CSS/JS med `?v=4`
 
-Avhukingene lagres kun lokalt i brukerens nettleser og påvirker ikke filene i GitHub-repoet.
+Roadmap-innholdet kan endres i `roadmap.html` under `window.NC_ROADMAP = { ... }`.
 
-## Redigering av roadmap
+## Feilsøking
 
-For å endre innholdet, rediger `window.NC_ROADMAP` nederst i `roadmap.html`.
-Hver milepæl kan ha disse feltene:
+Hvis roadmap-siden viser teksten `Roadmap lastes …`, finner ikke nettleseren `app.js`. Kontroller at `app.js` ligger i samme mappe som `roadmap.html`.
 
-- `id`
-- `date`
-- `title`
-- `tag`
-- `status`
-- `owner`
-- `detail`
-- `deliverables`
-- `success`
+Hvis designet ser gammelt ut etter opplasting, gjør en hard refresh i nettleseren. På Windows kan du bruke `Ctrl + F5`.

@@ -109,23 +109,69 @@ function renderRoadmap() {
     const activeCount = allItems.filter((item) => normalize(item.status).includes('pågår')).length;
     const plannedCount = allItems.filter((item) => normalize(item.status).includes('planlagt')).length;
 
-    return el('section', { class: 'roadmap-dashboard' }, [
-      el('article', { class: 'roadmap-stat primary-stat' }, [
-        el('span', {}, ['Fremdrift lokalt']),
-        el('strong', {}, [`${progress}%`]),
-        el('div', { class: 'progress-track', 'aria-label': `Fremdrift ${progress} prosent` }, [
-          el('div', { class: 'progress-fill', style: `width:${progress}%` }),
+    function statCard({ variant = '', icon, label, value, subLabel, progressValue }) {
+      const bodyChildren = [
+        el('span', { class: 'stat-label' }, [label]),
+        el('div', { class: 'stat-value-row' }, [
+          el('strong', {}, [String(value)]),
+          subLabel ? el('small', {}, [subLabel]) : el('small', { class: 'is-empty' }, ['']),
         ]),
-      ]),
-      el('article', { class: 'roadmap-stat' }, [el('span', {}, ['Milepæler']), el('strong', {}, [String(allItems.length)]), el('small', {}, [`${filteredItems.length} vises`])]),
-      el('article', { class: 'roadmap-stat' }, [el('span', {}, ['Pågår']), el('strong', {}, [String(activeCount)]), el('small', {}, ['Basert på status'])]),
-      el('article', { class: 'roadmap-stat' }, [el('span', {}, ['Planlagt']), el('strong', {}, [String(plannedCount)]), el('small', {}, ['Neste aktiviteter'])]),
+      ];
+
+      if (typeof progressValue === 'number') {
+        bodyChildren.push(el('div', { class: 'progress-track', 'aria-label': `Fremdrift ${progressValue} prosent` }, [
+          el('div', { class: 'progress-fill', style: `width:${progressValue}%` }),
+        ]));
+      }
+
+      return el('article', { class: `roadmap-stat ${variant}`.trim() }, [
+        el('span', { class: 'roadmap-stat-icon', 'aria-hidden': 'true' }, [icon]),
+        el('div', { class: 'roadmap-stat-body' }, bodyChildren),
+      ]);
+    }
+
+    return el('section', { class: 'roadmap-dashboard', 'aria-label': 'Roadmap statusoversikt' }, [
+      statCard({
+        variant: 'primary-stat',
+        icon: '↗',
+        label: 'Fremdrift lokalt',
+        value: `${progress}%`,
+        progressValue: progress,
+      }),
+      statCard({
+        variant: 'milestone-stat',
+        icon: '⚑',
+        label: 'Milepæler',
+        value: allItems.length,
+        subLabel: `${filteredItems.length} vises`,
+      }),
+      statCard({
+        variant: 'active-stat',
+        icon: '•',
+        label: 'Pågår',
+        value: activeCount,
+      }),
+      statCard({
+        variant: 'planned-stat',
+        icon: '□',
+        label: 'Planlagt',
+        value: plannedCount,
+      }),
     ]);
   }
 
   function renderControls() {
     const statuses = getUnique(allItems.map((item) => item.status));
     const tags = getUnique(allItems.map((item) => item.tag));
+
+    function selectControl({ icon, label, select }) {
+      return el('label', { class: 'select-control' }, [
+        el('span', { class: 'control-icon', 'aria-hidden': 'true' }, [icon]),
+        el('span', { class: 'sr-only' }, [label]),
+        select,
+        el('span', { class: 'select-arrow', 'aria-hidden': 'true' }, ['⌄']),
+      ]);
+    }
 
     const search = el('input', {
       class: 'control-input',
@@ -166,16 +212,20 @@ function renderRoadmap() {
     ]);
 
     const viewButton = el('button', {
-      class: 'mini-button',
+      class: `toggle-control ${state.view === 'compact' ? 'is-on' : ''}`,
       type: 'button',
+      'aria-pressed': state.view === 'compact' ? 'true' : 'false',
       onclick: () => {
         state.view = state.view === 'grouped' ? 'compact' : 'grouped';
         update();
       },
-    }, [state.view === 'grouped' ? 'Kompakt visning' : 'Fasevis visning']);
+    }, [
+      el('span', { class: 'toggle-switch', 'aria-hidden': 'true' }, [el('span', {}, [])]),
+      el('span', {}, ['Kompakt visning']),
+    ]);
 
     const resetButton = el('button', {
-      class: 'mini-button ghost',
+      class: 'mini-button ghost reset-button',
       type: 'button',
       onclick: () => {
         state.search = '';
@@ -184,11 +234,20 @@ function renderRoadmap() {
         state.phase = 'all';
         update();
       },
-    }, ['Nullstill filter']);
+    }, [el('span', { 'aria-hidden': 'true' }, ['↻']), el('span', {}, ['Nullstill filter'])]);
 
-    return el('section', { class: 'roadmap-controls', role: 'search' }, [
-      el('div', { class: 'control-main' }, [search]),
-      el('div', { class: 'control-grid' }, [statusSelect, tagSelect, phaseSelect, viewButton, resetButton]),
+    return el('section', { class: 'roadmap-controls', role: 'search', 'aria-label': 'Filtrer roadmap' }, [
+      el('div', { class: 'search-control' }, [
+        el('span', { class: 'search-icon', 'aria-hidden': 'true' }, ['⌕']),
+        search,
+      ]),
+      el('div', { class: 'control-grid' }, [
+        selectControl({ icon: '☷', label: 'Statusfilter', select: statusSelect }),
+        selectControl({ icon: '◇', label: 'Temafilter', select: tagSelect }),
+        selectControl({ icon: '▱', label: 'Fasefilter', select: phaseSelect }),
+        viewButton,
+        resetButton,
+      ]),
     ]);
   }
 
@@ -286,8 +345,10 @@ function renderRoadmap() {
   function update() {
     const filteredItems = applyFilters(allItems);
     container.innerHTML = '';
-    container.appendChild(renderDashboard(filteredItems));
-    container.appendChild(renderControls());
+    container.appendChild(el('section', { class: 'roadmap-command-center' }, [
+      renderDashboard(filteredItems),
+      renderControls(),
+    ]));
 
     if (!filteredItems.length) {
       container.appendChild(el('div', { class: 'info-card empty-state' }, [
