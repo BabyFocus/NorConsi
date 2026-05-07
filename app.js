@@ -373,7 +373,306 @@ function renderRoadmap() {
   update();
 }
 
+
+
+function renderAlternatives() {
+  const container = document.querySelector('[data-alternatives]');
+  const alternatives = window.NC_ALTERNATIVES;
+  if (!container || !Array.isArray(alternatives)) return;
+
+  const state = {
+    search: '',
+    score: 'all',
+    category: 'all',
+    role: 'all',
+    view: 'detailed',
+  };
+
+  function applyFilters(items) {
+    return items.filter((item) => {
+      const haystack = normalize([
+        item.number,
+        item.title,
+        item.score,
+        item.scoreGroup,
+        item.role,
+        item.category,
+        item.recommendation,
+        item.description,
+        item.bestFor,
+        item.prerequisites,
+        ...(item.advantages || []),
+        ...(item.disadvantages || []),
+        ...(item.risks || []),
+      ].join(' '));
+      const matchesSearch = !state.search || haystack.includes(normalize(state.search));
+      const matchesScore = state.score === 'all' || item.scoreGroup === state.score;
+      const matchesCategory = state.category === 'all' || item.category === state.category;
+      const matchesRole = state.role === 'all' || item.role === state.role;
+      return matchesSearch && matchesScore && matchesCategory && matchesRole;
+    });
+  }
+
+  function renderAlternativeDashboard(filteredItems) {
+    const recommended = alternatives.find((item) => item.recommended) || alternatives[0];
+    const highScoreCount = alternatives.filter((item) => item.scoreGroup === 'Høy').length;
+
+    function statCard({ variant = '', icon, label, value, subLabel }) {
+      return el('article', { class: `roadmap-stat alternative-stat ${variant}`.trim() }, [
+        el('span', { class: 'roadmap-stat-icon', 'aria-hidden': 'true' }, [icon]),
+        el('div', { class: 'roadmap-stat-body' }, [
+          el('span', { class: 'stat-label' }, [label]),
+          el('div', { class: 'stat-value-row' }, [
+            el('strong', {}, [String(value)]),
+            subLabel ? el('small', {}, [subLabel]) : el('small', { class: 'is-empty' }, ['']),
+          ]),
+        ]),
+      ]);
+    }
+
+    return el('section', { class: 'roadmap-dashboard alternatives-dashboard', 'aria-label': 'Alternativer statusoversikt' }, [
+      statCard({
+        variant: 'primary-stat decision-stat',
+        icon: '★',
+        label: 'Anbefalt modell',
+        value: `Alt. ${recommended.number}`,
+        subLabel: recommended.title,
+      }),
+      statCard({
+        variant: 'milestone-stat',
+        icon: '◇',
+        label: 'Alternativer',
+        value: alternatives.length,
+        subLabel: `${filteredItems.length} vises`,
+      }),
+      statCard({
+        variant: 'score-stat',
+        icon: '↗',
+        label: 'Høy vurdering',
+        value: highScoreCount,
+        subLabel: 'modell',
+      }),
+      statCard({
+        variant: 'filtered-stat',
+        icon: '⌕',
+        label: 'Aktivt utvalg',
+        value: filteredItems.length,
+        subLabel: 'treff',
+      }),
+    ]);
+  }
+
+  function renderAlternativeControls() {
+    const scores = getUnique(alternatives.map((item) => item.scoreGroup));
+    const categories = getUnique(alternatives.map((item) => item.category));
+    const roles = getUnique(alternatives.map((item) => item.role));
+
+    function selectControl({ icon, label, select }) {
+      return el('label', { class: 'select-control' }, [
+        el('span', { class: 'control-icon', 'aria-hidden': 'true' }, [icon]),
+        el('span', { class: 'sr-only' }, [label]),
+        select,
+        el('span', { class: 'select-arrow', 'aria-hidden': 'true' }, ['⌄']),
+      ]);
+    }
+
+    const search = el('input', {
+      class: 'control-input',
+      type: 'search',
+      placeholder: 'Søk i alternativer …',
+      value: state.search,
+      oninput: (event) => {
+        state.search = event.target.value;
+        update();
+      },
+    });
+
+    const scoreSelect = el('select', {
+      class: 'control-select',
+      onchange: (event) => {
+        state.score = event.target.value;
+        update();
+      },
+    }, [option('all', 'Alle vurderinger', state.score), ...scores.map((score) => option(score, score, state.score))]);
+
+    const categorySelect = el('select', {
+      class: 'control-select',
+      onchange: (event) => {
+        state.category = event.target.value;
+        update();
+      },
+    }, [option('all', 'Alle typer', state.category), ...categories.map((category) => option(category, category, state.category))]);
+
+    const roleSelect = el('select', {
+      class: 'control-select',
+      onchange: (event) => {
+        state.role = event.target.value;
+        update();
+      },
+    }, [option('all', 'Alle roller', state.role), ...roles.map((role) => option(role, role, state.role))]);
+
+    const viewButton = el('button', {
+      class: `toggle-control ${state.view === 'compact' ? 'is-on' : ''}`,
+      type: 'button',
+      'aria-pressed': state.view === 'compact' ? 'true' : 'false',
+      onclick: () => {
+        state.view = state.view === 'detailed' ? 'compact' : 'detailed';
+        update();
+      },
+    }, [
+      el('span', { class: 'toggle-switch', 'aria-hidden': 'true' }, [el('span', {}, [])]),
+      el('span', {}, ['Kompakt visning']),
+    ]);
+
+    const resetButton = el('button', {
+      class: 'mini-button ghost reset-button',
+      type: 'button',
+      onclick: () => {
+        state.search = '';
+        state.score = 'all';
+        state.category = 'all';
+        state.role = 'all';
+        update();
+      },
+    }, [el('span', { 'aria-hidden': 'true' }, ['↻']), el('span', {}, ['Nullstill filter'])]);
+
+    return el('section', { class: 'roadmap-controls alternatives-controls', role: 'search', 'aria-label': 'Filtrer alternativer' }, [
+      el('div', { class: 'search-control' }, [
+        el('span', { class: 'search-icon', 'aria-hidden': 'true' }, ['⌕']),
+        search,
+      ]),
+      el('div', { class: 'control-grid' }, [
+        selectControl({ icon: '≋', label: 'Vurderingsfilter', select: scoreSelect }),
+        selectControl({ icon: '◇', label: 'Typefilter', select: categorySelect }),
+        selectControl({ icon: '▱', label: 'Rollefilter', select: roleSelect }),
+        viewButton,
+        resetButton,
+      ]),
+    ]);
+  }
+
+  function renderConclusion() {
+    const recommended = alternatives.find((item) => item.recommended);
+    return el('section', { class: 'alternatives-conclusion' }, [
+      el('div', { class: 'tag' }, ['Kort konklusjon']),
+      el('h2', {}, ['Alternativ 4 bør være hovedmodellen']),
+      el('p', {}, ['CSNE + Automasjon gir best balanse mellom teknisk troverdighet, kommersiell tydelighet og strategisk gjennomføringskraft. Alternativ 5 kan brukes som akselerator, men erstatter ikke behovet for intern organisering.']),
+      recommended ? el('a', { class: 'button primary', href: `#${recommended.id}` }, ['Gå til anbefalt modell']) : el('span', {}, []),
+    ]);
+  }
+
+  function renderSummaryTable(items) {
+    return el('section', { class: 'alternative-table-card' }, [
+      el('div', { class: 'section-title compact-title' }, [
+        el('h2', {}, ['Sammenligning']),
+        el('p', {}, ['Tabellen oppdateres automatisk når du søker eller filtrerer.']),
+      ]),
+      el('div', { class: 'table-scroll' }, [
+        el('table', { class: 'table alt-summary-table' }, [
+          el('thead', {}, [el('tr', {}, [
+            el('th', {}, ['Alternativ']),
+            el('th', {}, ['Samlet vurdering']),
+            el('th', {}, ['Rolle i anbefalt strategi']),
+            el('th', {}, ['Type']),
+          ])]),
+          el('tbody', {}, items.map((item) => el('tr', { class: item.recommended ? 'is-recommended-row' : '' }, [
+            el('td', {}, [`${item.number}. ${item.title}`]),
+            el('td', {}, [item.score]),
+            el('td', {}, [item.role]),
+            el('td', {}, [item.category]),
+          ]))),
+        ]),
+      ]),
+    ]);
+  }
+
+  function renderList(title, items, className) {
+    return el('div', { class: className }, [
+      el('h4', {}, [title]),
+      el('ul', {}, (items || []).map((item) => el('li', {}, [item]))),
+    ]);
+  }
+
+  function renderAlternativeCard(item) {
+    return el('article', { class: `alternative-card ${item.recommended ? 'recommended' : ''}`, id: item.id }, [
+      el('div', { class: 'alternative-card-top' }, [
+        el('span', { class: 'tag' }, [`Alternativ ${item.number}`]),
+        el('span', { class: `score score-${safeId(item.scoreGroup)}` }, [`Samlet vurdering: ${item.score}`]),
+        item.recommended ? el('span', { class: 'recommended-chip' }, ['Anbefalt']) : el('span', { class: 'pill' }, [item.category]),
+      ]),
+      el('div', { class: 'alternative-card-head' }, [
+        el('div', {}, [
+          el('h3', {}, [item.title]),
+          el('p', { class: 'alternative-role' }, [item.role]),
+        ]),
+        el('div', { class: 'alternative-score-box' }, [
+          el('span', {}, ['Vurdering']),
+          el('strong', {}, [item.score]),
+        ]),
+      ]),
+      el('p', { class: 'alternative-recommendation' }, [el('strong', {}, ['Anbefaling: ']), item.recommendation]),
+      el('p', { class: 'alternative-description' }, [item.description]),
+      el('div', { class: 'alternative-columns' }, [
+        renderList('Fordeler', item.advantages, 'alt-list positives'),
+        renderList('Ulemper', item.disadvantages, 'alt-list negatives'),
+      ]),
+      renderList('Viktige risikoer', item.risks, 'alt-list risks'),
+      el('div', { class: 'alternative-fit-grid' }, [
+        el('div', {}, [el('strong', {}, ['Passer best når']), el('p', {}, [item.bestFor])]),
+        el('div', {}, [el('strong', {}, ['Forutsetninger for å lykkes']), el('p', {}, [item.prerequisites])]),
+      ]),
+    ]);
+  }
+
+  function renderCompactAlternatives(items) {
+    return el('section', { class: 'alternative-compact-grid' }, items.map((item) => el('a', { class: `alternative-compact-card ${item.recommended ? 'recommended' : ''}`, href: `#${item.id}` }, [
+      el('div', { class: 'alternative-compact-number' }, [`${item.number}`]),
+      el('div', {}, [
+        el('span', { class: 'pill' }, [item.category]),
+        el('h3', {}, [item.title]),
+        el('p', {}, [item.recommendation]),
+        el('div', { class: 'alternative-compact-meta' }, [
+          el('strong', {}, [item.score]),
+          el('span', {}, [item.role]),
+        ]),
+      ]),
+    ])));
+  }
+
+  function update() {
+    const filteredItems = applyFilters(alternatives);
+    container.innerHTML = '';
+    container.appendChild(el('section', { class: 'roadmap-command-center alternative-command' }, [
+      renderAlternativeDashboard(filteredItems),
+      renderAlternativeControls(),
+    ]));
+    container.appendChild(renderConclusion());
+
+    if (!filteredItems.length) {
+      container.appendChild(el('div', { class: 'info-card empty-state' }, [
+        el('div', { class: 'tag' }, ['Ingen treff']),
+        el('h3', {}, ['Fant ingen alternativer med valgt filter']),
+        el('p', {}, ['Prøv å nullstille filteret eller søk på et annet begrep.']),
+      ]));
+      return;
+    }
+
+    container.appendChild(renderSummaryTable(filteredItems));
+
+    if (state.view === 'compact') {
+      container.appendChild(renderCompactAlternatives(filteredItems));
+      return;
+    }
+
+    container.appendChild(el('section', { class: 'alternative-card-grid' }, filteredItems.map(renderAlternativeCard)));
+  }
+
+  update();
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
   document.body.classList.add('js-loaded');
   renderRoadmap();
+  renderAlternatives();
 });

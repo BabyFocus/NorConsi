@@ -17,12 +17,18 @@ Funksjoner:
 - filter på status, tema og fase
 - kompakt/fasevis visning
 - lokale avhukinger for fullførte milepæler via `localStorage`
-- cache-busting på CSS/JS med `?v=4`
+- cache-busting på CSS/JS med `?v=5`
 
 Roadmap-innholdet kan endres i `roadmap.html` under `window.NC_ROADMAP = { ... }`.
 
+## Alternativer
+
+Alternativer-siden er også dynamisk og bruker samme visuelle stil som roadmap-siden. Den har statuskort, søk, filter på vurdering/type/rolle, kompakt visning og dynamisk sammenligningstabell.
+
+Alternativene kan endres i `alternatives.html` under `window.NC_ALTERNATIVES = [ ... ]`.
+
 ## Feilsøking
 
-Hvis roadmap-siden viser teksten `Roadmap lastes …`, finner ikke nettleseren `app.js`. Kontroller at `app.js` ligger i samme mappe som `roadmap.html`.
+Hvis roadmap-siden viser teksten `Roadmap lastes …`, eller alternativer-siden viser `Alternativer lastes …`, finner ikke nettleseren `app.js`. Kontroller at `app.js` ligger i samme mappe som `roadmap.html`.
 
 Hvis designet ser gammelt ut etter opplasting, gjør en hard refresh i nettleseren. På Windows kan du bruke `Ctrl + F5`.
