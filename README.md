@@ -17,7 +17,7 @@ Funksjoner:
 - filter på status, tema og fase
 - kompakt/fasevis visning
 - lokale avhukinger for fullførte milepæler via `localStorage`
-- cache-busting på CSS/JS med `?v=6`
+- cache-busting på CSS/JS med `?v=7`
 
 Roadmap-innholdet kan endres i `roadmap.html` under `window.NC_ROADMAP = { ... }`.
 
@@ -38,3 +38,16 @@ Tjenestene kan endres i `services.html` under `window.NC_SERVICES = [ ... ]`.
 Hvis roadmap-siden viser teksten `Roadmap lastes …`, eller alternativer-siden viser `Alternativer lastes …`, finner ikke nettleseren `app.js`. Kontroller at `app.js` ligger i samme mappe som `roadmap.html`.
 
 Hvis designet ser gammelt ut etter opplasting, gjør en hard refresh i nettleseren. På Windows kan du bruke `Ctrl + F5`.
+
+
+## Mandat
+
+Mandatsiden er gjort dynamisk med statuskort, søk, filter på område/status, kompakt visning og lukkede accordion-bokser. Innholdet dekker formål, bakgrunn, mandatperiode, myndighet, leveransemodell, økonomistyring, KPI-er og foreslått mandattekst.
+
+Mandatet kan endres i `mandate.html` under `window.NC_MANDATE = { ... }`.
+
+## Business case
+
+Business case-siden er gjort dynamisk med statuskort, søk, filter på kategori/status, kompakt visning og lukkede accordion-bokser. Siden inneholder utfyllende tekst, femårs økonomisk modell, scenarioanalyse, kommersiell logikk, investeringsbehov, KPI-er og anbefalt beslutning.
+
+Business case-data kan endres i `business-case.html` under `window.NC_BUSINESS_CASE = { ... }`.

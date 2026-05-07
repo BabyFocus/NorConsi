@@ -943,9 +943,493 @@ function renderServices() {
   update();
 }
 
+
+
+function renderMandate() {
+  const container = document.querySelector('[data-mandate]');
+  const mandate = window.NC_MANDATE;
+  if (!container || !mandate || !Array.isArray(mandate.sections)) return;
+
+  const state = {
+    search: '',
+    category: 'all',
+    status: 'all',
+    view: 'detailed',
+    open: new Set(),
+  };
+
+  function applyFilters(items) {
+    return items.filter((item) => {
+      const haystack = normalize([
+        item.tag,
+        item.category,
+        item.status,
+        item.title,
+        item.summary,
+        item.purpose,
+        item.decision,
+        ...(item.includes || []),
+        ...(item.outputs || []),
+      ].join(' '));
+      const matchesSearch = !state.search || haystack.includes(normalize(state.search));
+      const matchesCategory = state.category === 'all' || item.category === state.category;
+      const matchesStatus = state.status === 'all' || item.status === state.status;
+      return matchesSearch && matchesCategory && matchesStatus;
+    });
+  }
+
+  function renderMandateDashboard(filteredItems) {
+    const categories = getUnique(mandate.sections.map((item) => item.category)).length;
+    function statCard({ variant = '', icon, label, value, subLabel }) {
+      return el('article', { class: `roadmap-stat mandate-stat ${variant}`.trim() }, [
+        el('span', { class: 'roadmap-stat-icon', 'aria-hidden': 'true' }, [icon]),
+        el('div', { class: 'roadmap-stat-body' }, [
+          el('span', { class: 'stat-label' }, [label]),
+          el('div', { class: 'stat-value-row' }, [
+            el('strong', {}, [String(value)]),
+            subLabel ? el('small', {}, [subLabel]) : el('small', { class: 'is-empty' }, ['']),
+          ]),
+        ]),
+      ]);
+    }
+
+    return el('section', { class: 'roadmap-dashboard mandate-dashboard', 'aria-label': 'Mandatoversikt' }, [
+      statCard({ variant: 'primary-stat mandate-period-stat', icon: '↗', label: 'Mandatperiode', value: mandate.summary.period, subLabel: 'oppstart' }),
+      statCard({ variant: 'mandate-phase-stat', icon: '▦', label: 'Faser', value: mandate.summary.phases, subLabel: 'modenhetsporter' }),
+      statCard({ variant: 'mandate-requirement-stat', icon: '✓', label: 'Mandatkrav', value: mandate.summary.requirements, subLabel: `${filteredItems.length} vises` }),
+      statCard({ variant: 'filtered-stat', icon: '⌕', label: 'Rapportering', value: mandate.summary.governance, subLabel: `${categories} områder` }),
+    ]);
+  }
+
+  function renderMandateControls() {
+    const categories = getUnique(mandate.sections.map((item) => item.category));
+    const statuses = getUnique(mandate.sections.map((item) => item.status));
+
+    function selectControl({ icon, label, select }) {
+      return el('label', { class: 'select-control' }, [
+        el('span', { class: 'control-icon', 'aria-hidden': 'true' }, [icon]),
+        el('span', { class: 'sr-only' }, [label]),
+        select,
+        el('span', { class: 'select-arrow', 'aria-hidden': 'true' }, ['⌄']),
+      ]);
+    }
+
+    const search = el('input', {
+      class: 'control-input',
+      type: 'search',
+      placeholder: 'Søk i mandat …',
+      value: state.search,
+      oninput: (event) => {
+        state.search = event.target.value;
+        update();
+      },
+    });
+
+    const categorySelect = el('select', {
+      class: 'control-select',
+      onchange: (event) => {
+        state.category = event.target.value;
+        update();
+      },
+    }, [option('all', 'Alle områder', state.category), ...categories.map((category) => option(category, category, state.category))]);
+
+    const statusSelect = el('select', {
+      class: 'control-select',
+      onchange: (event) => {
+        state.status = event.target.value;
+        update();
+      },
+    }, [option('all', 'Alle statuser', state.status), ...statuses.map((status) => option(status, status, state.status))]);
+
+    const viewButton = el('button', {
+      class: `toggle-control ${state.view === 'compact' ? 'is-on' : ''}`,
+      type: 'button',
+      'aria-pressed': state.view === 'compact' ? 'true' : 'false',
+      onclick: () => {
+        state.view = state.view === 'detailed' ? 'compact' : 'detailed';
+        update();
+      },
+    }, [
+      el('span', { class: 'toggle-switch', 'aria-hidden': 'true' }, [el('span', {}, [])]),
+      el('span', {}, ['Kompakt visning']),
+    ]);
+
+    const resetButton = el('button', {
+      class: 'mini-button ghost reset-button',
+      type: 'button',
+      onclick: () => {
+        state.search = '';
+        state.category = 'all';
+        state.status = 'all';
+        update();
+      },
+    }, [el('span', { 'aria-hidden': 'true' }, ['↻']), el('span', {}, ['Nullstill filter'])]);
+
+    return el('section', { class: 'roadmap-controls mandate-controls', role: 'search', 'aria-label': 'Filtrer mandat' }, [
+      el('div', { class: 'search-control' }, [
+        el('span', { class: 'search-icon', 'aria-hidden': 'true' }, ['⌕']),
+        search,
+      ]),
+      el('div', { class: 'control-grid mandate-control-grid' }, [
+        selectControl({ icon: '◇', label: 'Områdefilter', select: categorySelect }),
+        selectControl({ icon: '▱', label: 'Statusfilter', select: statusSelect }),
+        viewButton,
+        resetButton,
+      ]),
+    ]);
+  }
+
+  function renderMandateIntro() {
+    return el('section', { class: 'alternatives-conclusion mandate-intro' }, [
+      el('div', { class: 'tag' }, ['Kort anbefaling']),
+      el('h2', {}, ['Etabler mandatet som en styrt investering']),
+      el('p', {}, ['Mandatet bør gi lavere profittkrav i oppstartsfasen, men samtidig stille tydelige krav til pipeline, pilotleveranser, metodeverk, bemanning, rapportering og beslutningsporter. Det viktigste er å skape nok organisatorisk kraft til at satsningen faktisk blir mer enn koordinering.']),
+    ]);
+  }
+
+  function renderMandateList(title, items, className) {
+    return el('div', { class: className }, [
+      el('h4', {}, [title]),
+      el('ul', {}, (items || []).map((item) => el('li', {}, [item]))),
+    ]);
+  }
+
+  function renderMandateAccordion(item) {
+    const isOpen = state.open.has(item.id);
+    const toggle = () => {
+      if (state.open.has(item.id)) state.open.delete(item.id);
+      else state.open.add(item.id);
+      update();
+    };
+
+    return el('article', { class: `service-accordion-card mandate-accordion-card ${isOpen ? 'is-open' : ''}`, id: item.id }, [
+      el('button', {
+        class: 'service-accordion-trigger mandate-accordion-trigger',
+        type: 'button',
+        'aria-expanded': isOpen ? 'true' : 'false',
+        'aria-controls': `${item.id}-panel`,
+        onclick: toggle,
+      }, [
+        el('div', { class: 'service-icon mandate-icon' }, [item.icon || '▦']),
+        el('div', { class: 'service-heading mandate-heading' }, [
+          el('div', { class: 'alternative-card-top' }, [
+            el('span', { class: 'tag' }, [item.tag]),
+            el('span', { class: 'pill' }, [item.category]),
+            el('span', { class: 'pill' }, [item.status]),
+          ]),
+          el('h3', {}, [item.title]),
+          el('p', {}, [item.summary]),
+        ]),
+        el('div', { class: 'service-side mandate-side' }, [
+          el('span', {}, ['Status']),
+          el('strong', {}, [item.status]),
+          el('em', {}, [isOpen ? 'Lukk' : 'Åpne']),
+        ]),
+        el('span', { class: 'accordion-chevron', 'aria-hidden': 'true' }, ['⌄']),
+      ]),
+      el('div', { class: 'service-accordion-panel mandate-accordion-panel', id: `${item.id}-panel`, 'aria-hidden': isOpen ? 'false' : 'true' }, [
+        el('p', { class: 'service-purpose mandate-purpose' }, [item.purpose]),
+        el('div', { class: 'service-detail-grid mandate-detail-grid' }, [
+          renderMandateList('Dette bør mandatet dekke', item.includes, 'alt-list positives'),
+          renderMandateList('Konkrete leveranser', item.outputs, 'alt-list'),
+        ]),
+        el('div', { class: 'mandate-decision' }, [
+          el('strong', {}, ['Anbefalt beslutning']),
+          el('p', {}, [item.decision]),
+        ]),
+      ]),
+    ]);
+  }
+
+  function update() {
+    const filteredItems = applyFilters(mandate.sections);
+    container.innerHTML = '';
+    container.appendChild(el('section', { class: 'roadmap-command-center mandate-command' }, [
+      renderMandateDashboard(filteredItems),
+      renderMandateControls(),
+    ]));
+    container.appendChild(renderMandateIntro());
+
+    if (!filteredItems.length) {
+      container.appendChild(el('div', { class: 'info-card empty-state' }, [
+        el('div', { class: 'tag' }, ['Ingen treff']),
+        el('h3', {}, ['Fant ingen mandatpunkter med valgt filter']),
+        el('p', {}, ['Prøv å nullstille filteret eller søk på et annet begrep.']),
+      ]));
+      return;
+    }
+
+    container.appendChild(el('section', { class: `services-accordion-list mandate-accordion-list ${state.view === 'compact' ? 'is-compact' : ''}` }, filteredItems.map(renderMandateAccordion)));
+  }
+
+  update();
+}
+
+function renderBusinessCase() {
+  const container = document.querySelector('[data-business-case]');
+  const business = window.NC_BUSINESS_CASE;
+  if (!container || !business || !Array.isArray(business.sections)) return;
+
+  const state = {
+    search: '',
+    category: 'all',
+    status: 'all',
+    view: 'detailed',
+    open: new Set(),
+  };
+
+  function applyFilters(items) {
+    return items.filter((item) => {
+      const haystack = normalize([
+        item.tag,
+        item.category,
+        item.status,
+        item.title,
+        item.summary,
+        item.purpose,
+        item.decision,
+        ...(item.includes || []),
+        ...(item.outputs || []),
+      ].join(' '));
+      const matchesSearch = !state.search || haystack.includes(normalize(state.search));
+      const matchesCategory = state.category === 'all' || item.category === state.category;
+      const matchesStatus = state.status === 'all' || item.status === state.status;
+      return matchesSearch && matchesCategory && matchesStatus;
+    });
+  }
+
+  function renderBusinessDashboard(filteredItems) {
+    function statCard({ variant = '', icon, label, value, subLabel }) {
+      return el('article', { class: `roadmap-stat business-stat ${variant}`.trim() }, [
+        el('span', { class: 'roadmap-stat-icon', 'aria-hidden': 'true' }, [icon]),
+        el('div', { class: 'roadmap-stat-body' }, [
+          el('span', { class: 'stat-label' }, [label]),
+          el('div', { class: 'stat-value-row' }, [
+            el('strong', {}, [String(value)]),
+            subLabel ? el('small', {}, [subLabel]) : el('small', { class: 'is-empty' }, ['']),
+          ]),
+        ]),
+      ]);
+    }
+
+    return el('section', { class: 'roadmap-dashboard business-dashboard', 'aria-label': 'Business case oversikt' }, [
+      statCard({ variant: 'primary-stat business-revenue-stat', icon: '↗', label: 'Omsetning år 5', value: business.summary.yearFiveRevenue, subLabel: 'basis' }),
+      statCard({ variant: 'business-result-stat', icon: 'Σ', label: 'Akkumulert resultat', value: business.summary.accumulatedResult, subLabel: '5 år basis' }),
+      statCard({ variant: 'business-break-even-stat', icon: '✓', label: 'Break-even', value: business.summary.breakEven, subLabel: 'første positive år' }),
+      statCard({ variant: 'filtered-stat', icon: '⌕', label: 'Margin år 5', value: business.summary.yearFiveMargin, subLabel: `${filteredItems.length} seksjoner` }),
+    ]);
+  }
+
+  function renderBusinessControls() {
+    const categories = getUnique(business.sections.map((item) => item.category));
+    const statuses = getUnique(business.sections.map((item) => item.status));
+
+    function selectControl({ icon, label, select }) {
+      return el('label', { class: 'select-control' }, [
+        el('span', { class: 'control-icon', 'aria-hidden': 'true' }, [icon]),
+        el('span', { class: 'sr-only' }, [label]),
+        select,
+        el('span', { class: 'select-arrow', 'aria-hidden': 'true' }, ['⌄']),
+      ]);
+    }
+
+    const search = el('input', {
+      class: 'control-input',
+      type: 'search',
+      placeholder: 'Søk i business case …',
+      value: state.search,
+      oninput: (event) => {
+        state.search = event.target.value;
+        update();
+      },
+    });
+
+    const categorySelect = el('select', {
+      class: 'control-select',
+      onchange: (event) => {
+        state.category = event.target.value;
+        update();
+      },
+    }, [option('all', 'Alle kategorier', state.category), ...categories.map((category) => option(category, category, state.category))]);
+
+    const statusSelect = el('select', {
+      class: 'control-select',
+      onchange: (event) => {
+        state.status = event.target.value;
+        update();
+      },
+    }, [option('all', 'Alle statuser', state.status), ...statuses.map((status) => option(status, status, state.status))]);
+
+    const viewButton = el('button', {
+      class: `toggle-control ${state.view === 'compact' ? 'is-on' : ''}`,
+      type: 'button',
+      'aria-pressed': state.view === 'compact' ? 'true' : 'false',
+      onclick: () => {
+        state.view = state.view === 'detailed' ? 'compact' : 'detailed';
+        update();
+      },
+    }, [
+      el('span', { class: 'toggle-switch', 'aria-hidden': 'true' }, [el('span', {}, [])]),
+      el('span', {}, ['Kompakt visning']),
+    ]);
+
+    const resetButton = el('button', {
+      class: 'mini-button ghost reset-button',
+      type: 'button',
+      onclick: () => {
+        state.search = '';
+        state.category = 'all';
+        state.status = 'all';
+        update();
+      },
+    }, [el('span', { 'aria-hidden': 'true' }, ['↻']), el('span', {}, ['Nullstill filter'])]);
+
+    return el('section', { class: 'roadmap-controls business-controls', role: 'search', 'aria-label': 'Filtrer business case' }, [
+      el('div', { class: 'search-control' }, [
+        el('span', { class: 'search-icon', 'aria-hidden': 'true' }, ['⌕']),
+        search,
+      ]),
+      el('div', { class: 'control-grid business-control-grid' }, [
+        selectControl({ icon: '◇', label: 'Kategorifilter', select: categorySelect }),
+        selectControl({ icon: '▱', label: 'Statusfilter', select: statusSelect }),
+        viewButton,
+        resetButton,
+      ]),
+    ]);
+  }
+
+  function renderBusinessIntro() {
+    return el('section', { class: 'alternatives-conclusion business-intro' }, [
+      el('div', { class: 'tag' }, ['Kort konklusjon']),
+      el('h2', {}, ['Caset forsvarer et styrt oppstartsmandat']),
+      el('p', {}, ['Basis-scenarioet viser negativt resultat i etableringsåret, men positiv utvikling fra år 2 dersom satsningen får tydelig mandat, riktig bemanning og repeterbare leveransepakker. Den største risikoen er ikke bare markedsrisiko, men at organiseringen blir for svak til å realisere potensialet.']),
+    ]);
+  }
+
+  function renderBusinessList(title, items, className) {
+    return el('div', { class: className }, [
+      el('h4', {}, [title]),
+      el('ul', {}, (items || []).map((item) => el('li', {}, [item]))),
+    ]);
+  }
+
+  function renderFinancialModel() {
+    return el('div', { class: 'business-financial-block' }, [
+      el('div', { class: 'table-scroll' }, [
+        el('table', { class: 'table business-financial-table' }, [
+          el('thead', {}, [el('tr', {}, [
+            el('th', {}, ['År']),
+            el('th', {}, ['Ansatte']),
+            el('th', {}, ['Omsetning']),
+            el('th', {}, ['Kostnad']),
+            el('th', {}, ['Resultat']),
+            el('th', {}, ['Margin']),
+          ])]),
+          el('tbody', {}, (business.financialRows || []).map((row) => el('tr', {}, [
+            el('td', {}, [row.year]),
+            el('td', {}, [row.employees]),
+            el('td', {}, [row.revenue]),
+            el('td', {}, [row.cost]),
+            el('td', {}, [row.result]),
+            el('td', {}, [row.margin]),
+          ]))),
+        ]),
+      ]),
+    ]);
+  }
+
+  function renderScenarioCards() {
+    return el('div', { class: 'business-scenario-grid' }, (business.scenarios || []).map((scenario) => el('article', { class: 'business-scenario-card' }, [
+      el('span', { class: 'tag' }, [scenario.name]),
+      el('strong', {}, [scenario.value]),
+      el('p', {}, [scenario.description]),
+    ])));
+  }
+
+  function renderSpecialBlock(item) {
+    if (item.kind === 'financial-model') return renderFinancialModel();
+    if (item.kind === 'scenarios') return renderScenarioCards();
+    return el('span', {}, []);
+  }
+
+  function renderBusinessAccordion(item) {
+    const isOpen = state.open.has(item.id);
+    const toggle = () => {
+      if (state.open.has(item.id)) state.open.delete(item.id);
+      else state.open.add(item.id);
+      update();
+    };
+
+    return el('article', { class: `service-accordion-card business-accordion-card ${isOpen ? 'is-open' : ''}`, id: item.id }, [
+      el('button', {
+        class: 'service-accordion-trigger business-accordion-trigger',
+        type: 'button',
+        'aria-expanded': isOpen ? 'true' : 'false',
+        'aria-controls': `${item.id}-panel`,
+        onclick: toggle,
+      }, [
+        el('div', { class: 'service-icon business-icon' }, [item.icon || '▦']),
+        el('div', { class: 'service-heading business-heading' }, [
+          el('div', { class: 'alternative-card-top' }, [
+            el('span', { class: 'tag' }, [item.tag]),
+            el('span', { class: 'pill' }, [item.category]),
+            el('span', { class: 'pill' }, [item.status]),
+          ]),
+          el('h3', {}, [item.title]),
+          el('p', {}, [item.summary]),
+        ]),
+        el('div', { class: 'service-side business-side' }, [
+          el('span', {}, ['Status']),
+          el('strong', {}, [item.status]),
+          el('em', {}, [isOpen ? 'Lukk' : 'Åpne']),
+        ]),
+        el('span', { class: 'accordion-chevron', 'aria-hidden': 'true' }, ['⌄']),
+      ]),
+      el('div', { class: 'service-accordion-panel business-accordion-panel', id: `${item.id}-panel`, 'aria-hidden': isOpen ? 'false' : 'true' }, [
+        el('p', { class: 'service-purpose business-purpose' }, [item.purpose]),
+        renderSpecialBlock(item),
+        el('div', { class: 'service-detail-grid business-detail-grid' }, [
+          renderBusinessList('Hovedpunkter', item.includes, 'alt-list positives'),
+          renderBusinessList('Leveranser eller beslutningsunderlag', item.outputs, 'alt-list'),
+        ]),
+        el('div', { class: 'mandate-decision business-decision' }, [
+          el('strong', {}, ['Anbefalt beslutning']),
+          el('p', {}, [item.decision]),
+        ]),
+      ]),
+    ]);
+  }
+
+  function update() {
+    const filteredItems = applyFilters(business.sections);
+    container.innerHTML = '';
+    container.appendChild(el('section', { class: 'roadmap-command-center business-command' }, [
+      renderBusinessDashboard(filteredItems),
+      renderBusinessControls(),
+    ]));
+    container.appendChild(renderBusinessIntro());
+
+    if (!filteredItems.length) {
+      container.appendChild(el('div', { class: 'info-card empty-state' }, [
+        el('div', { class: 'tag' }, ['Ingen treff']),
+        el('h3', {}, ['Fant ingen business case-punkter med valgt filter']),
+        el('p', {}, ['Prøv å nullstille filteret eller søk på et annet begrep.']),
+      ]));
+      return;
+    }
+
+    container.appendChild(el('section', { class: `services-accordion-list business-accordion-list ${state.view === 'compact' ? 'is-compact' : ''}` }, filteredItems.map(renderBusinessAccordion)));
+  }
+
+  update();
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
   document.body.classList.add('js-loaded');
   renderRoadmap();
   renderAlternatives();
   renderServices();
+  renderMandate();
+  renderBusinessCase();
 });
