@@ -1,1 +1,197 @@
-<!doctype html><html lang="no"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Tjenester | Norconsult OT Cyber AI</title><link rel="stylesheet" href="./assets/styles.css?v=5"/></head><body><header class="site-header"><nav class="nav"><a class="brand" href="./index.html"><span class="brand-mark"></span><span>Norconsult OT Cyber AI</span></a><div class="nav-links"><a href="./roadmap.html">Roadmap</a><a href="./services.html">Tjenester</a><a href="./alternatives.html">Alternativer</a><a href="./business-case.html">Business case</a><a href="./mandate.html">Mandat</a></div></nav></header><main><section class="page-hero"><div class="eyebrow">Tjenesteportefølje</div><h1>Fra styring til verifikasjon i OT-miljøer</h1><p>Et samlet tjenesteutkast for kunder som trenger praktisk støtte innen OT-sikkerhet, nettverk, automasjon, etterlevelse og AI-governance.</p></section><section class="section"><div class="grid-3"><article class="info-card"><div class="tag">Kartlegging</div><h3>OT-risiko og modenhet</h3><p>Innledende vurdering av anlegg, systemer, avhengigheter, sårbarheter, roller og dokumentasjonsgrunnlag.</p></article><article class="info-card"><div class="tag">Arkitektur</div><h3>Sikker OT-design</h3><p>Sone- og conduit-modell, nettverkssegmentering, brannmurprinsipper, fjernaksess og krav til leverandører.</p></article><article class="info-card"><div class="tag">Etterlevelse</div><h3>Regelverk og styring</h3><p>Gap-analyser, policy, kravspesifikasjoner og dokumentasjon mot relevante krav og standarder.</p></article></div></section><section class="section"><div class="grid-3"><article class="info-card"><div class="tag">Prosjektstøtte</div><h3>Anskaffelse og kontrakt</h3><p>Cyberkrav i konkurransegrunnlag, tilbudsevaluering, FAT/SAT-krav og sikkerhetskrav i serviceavtaler.</p></article><article class="info-card"><div class="tag">Verifikasjon</div><h3>Test og kontroll</h3><p>Teknisk kontroll av konfigurasjon, segmentering, tilgangsstyring og leverandørtilkoblinger.</p></article><article class="info-card"><div class="tag">Enablement</div><h3>Workshop og opplæring</h3><p>Praktiske leder- og fagworkshops for å etablere roller, ansvar, styring og felles arbeidsform.</p></article></div></section></main><footer class="footer">Utkast til strategisk veikart • Norconsult OT, Cyber, Network Engineering og AI Governance • 2026</footer><script src="./app.js?v=5" defer></script></body></html>
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Tjenester | Norconsult OT Cyber AI</title>
+  <link rel="stylesheet" href="./assets/styles.css?v=6"/>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="./index.html"><span class="brand-mark"></span><span>Norconsult OT Cyber AI</span></a>
+      <div class="nav-links">
+        <a href="./roadmap.html">Roadmap</a>
+        <a href="./services.html">Tjenester</a>
+        <a href="./alternatives.html">Alternativer</a>
+        <a href="./business-case.html">Business case</a>
+        <a href="./mandate.html">Mandat</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="eyebrow">Tjenesteportefølje</div>
+      <h1>Fra styring til verifikasjon i OT-miljøer</h1>
+      <p>Et samlet tjenesteutkast for kunder som trenger praktisk støtte innen OT-sikkerhet, nettverk, automasjon, etterlevelse og AI-governance.</p>
+    </section>
+
+    <section class="services-wrap" data-services>
+      <div class="info-card empty-state">
+        <div class="tag">Laster</div>
+        <h3>Tjenester lastes …</h3>
+        <p>Dersom denne teksten blir stående, kontroller at <code>app.js</code> ligger i samme mappe som siden og at JavaScript er aktivert.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">Utkast til strategisk veikart • Norconsult OT, Cyber, Network Engineering og AI Governance • 2026</footer>
+
+  <script>
+    window.NC_SERVICES = [
+      {
+        id: "service-risk-maturity",
+        icon: "⌕",
+        tag: "Kartlegging",
+        category: "Analyse",
+        level: "Tidligfase",
+        title: "OT-risiko og modenhet",
+        summary: "Innledende vurdering av anlegg, systemer, avhengigheter, sårbarheter, roller og dokumentasjonsgrunnlag.",
+        purpose: "Tjenesten gir kunden et strukturert bilde av dagens OT-sikkerhet, modenhet og viktigste forbedringsområder før det investeres i større tiltak.",
+        delivery: "Modenhetsrapport",
+        includes: [
+          "Intervjuer med drift, IKT, ledelse og relevante leverandører.",
+          "Kartlegging av systemtyper, kritikalitet, fjernaksess, integrasjoner og dokumentasjonsstatus.",
+          "Vurdering av organisatorisk modenhet, roller, styring og praktiske svakheter.",
+          "Prioritering av forbedringsområder som kan gå videre til roadmap eller tiltaksliste."
+        ],
+        outputs: [
+          "Modenhetsvurdering med funn og anbefalinger.",
+          "Overordnet risikobilde for OT-miljøet.",
+          "Prioritert forbedringsliste.",
+          "Beslutningsgrunnlag for neste fase."
+        ],
+        goodFor: "Kunden mangler helhetsoversikt, skal starte et OT-sikkerhetsprogram, eller trenger et nøkternt grunnlag før budsjett og tiltak.",
+        value: "Gir ledelse og drift et felles språk for videre arbeid, uten å starte med for tekniske eller kostbare tiltak."
+      },
+      {
+        id: "service-secure-design",
+        icon: "▱",
+        tag: "Arkitektur",
+        category: "Design",
+        level: "Prosjektfase",
+        title: "Sikker OT-design",
+        summary: "Sone- og conduit-modell, nettverkssegmentering, brannmurprinsipper, fjernaksess og krav til leverandører.",
+        purpose: "Tjenesten oversetter sikkerhetskrav til praktiske arkitekturvalg som kan brukes i prosjektering, anskaffelse og drift.",
+        delivery: "Arkitekturpakke",
+        includes: [
+          "Inndeling i soner og conduits basert på funksjon, kritikalitet og driftsbehov.",
+          "Forslag til segmentering, brannmursoner, fjernaksess og administrasjonsflater.",
+          "Tekniske prinsipper for logging, overvåking, backup, identitet og tilgang.",
+          "Støtte til dialog mellom automasjon, nettverk, IKT og systemeier."
+        ],
+        outputs: [
+          "Målarkitektur for OT-nettverk.",
+          "Sone- og conduit-skisse.",
+          "Prinsipper for brannmurregler og fjernaksess.",
+          "Kravinnspill til konkurransegrunnlag."
+        ],
+        goodFor: "Kunden skal bygge nytt, modernisere eksisterende OT-miljø, etablere DMZ eller rydde opp i uoversiktlige integrasjoner.",
+        value: "Reduserer risiko for at sikkerhet blir et tillegg mot slutten av prosjektet, og gjør kravene lettere å følge opp mot leverandør."
+      },
+      {
+        id: "service-governance-compliance",
+        icon: "☷",
+        tag: "Etterlevelse",
+        category: "Styring",
+        level: "Ledelse",
+        title: "Regelverk og styring",
+        summary: "Gap-analyser, policy, kravspesifikasjoner og dokumentasjon mot relevante krav og standarder.",
+        purpose: "Tjenesten hjelper kunden å gjøre regelverk, standarder og interne krav om til operativ styring for OT-miljøer.",
+        delivery: "Styringspakke",
+        includes: [
+          "Gap-vurdering mot relevante krav, standarder og interne styringsdokumenter.",
+          "Oversettelse av tekniske krav til praktiske roller, ansvar og rutiner.",
+          "Utkast til policy, prinsipper, kravbibliotek eller styrende dokumentasjon.",
+          "Ledelsesrettet oppsummering av ansvar, prioriteringer og beslutningspunkter."
+        ],
+        outputs: [
+          "Gap-rapport.",
+          "Kravmatrise eller kontrolloversikt.",
+          "Utkast til policy eller operativt brodokument.",
+          "Ledelsesnotat med anbefalt prioritering."
+        ],
+        goodFor: "Kunden må dokumentere etterlevelse, etablere intern styring, eller koble OT-sikkerhet til virksomhetsstyring og ansvarslinjer.",
+        value: "Gjør styring praktisk og etterprøvbar, uten at organisasjonen drukner i standardtekst."
+      },
+      {
+        id: "service-procurement-contract",
+        icon: "✦",
+        tag: "Prosjektstøtte",
+        category: "Anskaffelse",
+        level: "Prosjektfase",
+        title: "Anskaffelse og kontrakt",
+        summary: "Cyberkrav i konkurransegrunnlag, tilbudsevaluering, FAT/SAT-krav og sikkerhetskrav i serviceavtaler.",
+        purpose: "Tjenesten sikrer at OT-sikkerhet bygges inn i anskaffelser og kontrakter før løsningene leveres og driftes.",
+        delivery: "Kravpakke",
+        includes: [
+          "Krav til leverandør, systemarkitektur, dokumentasjon, herding, tilgang og livsløp.",
+          "Støtte til tilbudsevaluering og avklaringsspørsmål.",
+          "Krav til FAT/SAT, idriftsettelse, overlevering og serviceavtaler.",
+          "Kobling mellom tekniske krav, kontrakt og driftsansvar."
+        ],
+        outputs: [
+          "Cyberkrav til konkurransegrunnlag.",
+          "Evalueringskriterier og sjekkliste.",
+          "FAT/SAT- og overleveringskrav.",
+          "Service- og vedlikeholdskrav."
+        ],
+        goodFor: "Kunden skal kjøpe nytt OT-system, fornye rammeavtale, eller vil unngå at sikkerhetskrav blir uklare etter kontraktsignering.",
+        value: "Flytter sikkerhet til riktig tidspunkt i prosjektet og gir bedre forhandlingsposisjon overfor leverandør."
+      },
+      {
+        id: "service-verification-control",
+        icon: "✓",
+        tag: "Verifikasjon",
+        category: "Kontroll",
+        level: "Gjennomføring",
+        title: "Test og kontroll",
+        summary: "Teknisk kontroll av konfigurasjon, segmentering, tilgangsstyring og leverandørtilkoblinger.",
+        purpose: "Tjenesten kontrollerer at planlagte sikkerhetstiltak faktisk er implementert og fungerer i praksis.",
+        delivery: "Kontrollrapport",
+        includes: [
+          "Gjennomgang av dokumentasjon, nettverk, brannmurregler og tilgangsmodeller.",
+          "Teknisk verifikasjon av segmentering, eksponering og administrative flater.",
+          "Kontroll av fjernaksess, leverandørtilgang og driftsrutiner.",
+          "Prioriterte funn med anbefalt lukking og ansvar."
+        ],
+        outputs: [
+          "Verifikasjonsrapport.",
+          "Funnliste med alvorlighet og anbefalt tiltak.",
+          "Kontrollmatrise mot krav.",
+          "Underlag for godkjenning eller avvikshåndtering."
+        ],
+        goodFor: "Kunden skal overta et anlegg, kontrollere leverandørleveranse, eller validere at segmentering og tilgangskontroll virker.",
+        value: "Gir tryggere overlevering og reduserer risikoen for at designkrav bare finnes på papiret."
+      },
+      {
+        id: "service-workshop-training",
+        icon: "◎",
+        tag: "Enablement",
+        category: "Kompetanse",
+        level: "Organisasjon",
+        title: "Workshop og opplæring",
+        summary: "Praktiske leder- og fagworkshops for å etablere roller, ansvar, styring og felles arbeidsform.",
+        purpose: "Tjenesten bygger felles forståelse mellom ledelse, drift, IKT, automasjon og prosjektmiljøer.",
+        delivery: "Workshopløp",
+        includes: [
+          "Tilpasset workshop for ledelse, systemeiere, IKT, automasjon eller drift.",
+          "Scenarioøvelser basert på realistiske OT-hendelser og beslutningspunkter.",
+          "Arbeid med roller, ansvar, eskalering og planverk.",
+          "Praktiske maler for videre arbeid etter workshopen."
+        ],
+        outputs: [
+          "Workshopoppsummering.",
+          "Tiltaks- og beslutningsliste.",
+          "Rolle- og ansvarsmatrise.",
+          "Forslag til videre roadmap."
+        ],
+        goodFor: "Kunden trenger å modne organisasjonen, få felles språk eller forankre OT-sikkerhet før større tekniske tiltak.",
+        value: "Skaper eierskap og reduserer avstanden mellom tekniske funn, ledelsesbeslutninger og faktisk drift."
+      }
+    ];
+  </script>
+  <script src="./app.js?v=6" defer></script>
+</body>
+</html>

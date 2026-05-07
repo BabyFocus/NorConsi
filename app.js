@@ -386,6 +386,7 @@ function renderAlternatives() {
     category: 'all',
     role: 'all',
     view: 'detailed',
+    open: new Set(),
   };
 
   function applyFilters(items) {
@@ -557,7 +558,19 @@ function renderAlternatives() {
       el('div', { class: 'tag' }, ['Kort konklusjon']),
       el('h2', {}, ['Alternativ 4 bør være hovedmodellen']),
       el('p', {}, ['CSNE + Automasjon gir best balanse mellom teknisk troverdighet, kommersiell tydelighet og strategisk gjennomføringskraft. Alternativ 5 kan brukes som akselerator, men erstatter ikke behovet for intern organisering.']),
-      recommended ? el('a', { class: 'button primary', href: `#${recommended.id}` }, ['Gå til anbefalt modell']) : el('span', {}, []),
+      recommended ? el('a', {
+        class: 'button primary',
+        href: `#${recommended.id}`,
+        onclick: (event) => {
+          event.preventDefault();
+          state.open.add(recommended.id);
+          update();
+          window.requestAnimationFrame(() => {
+            const target = document.getElementById(recommended.id);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        },
+      }, ['Gå til anbefalt modell']) : el('span', {}, []),
     ]);
   }
 
@@ -594,49 +607,89 @@ function renderAlternatives() {
   }
 
   function renderAlternativeCard(item) {
-    return el('article', { class: `alternative-card ${item.recommended ? 'recommended' : ''}`, id: item.id }, [
-      el('div', { class: 'alternative-card-top' }, [
-        el('span', { class: 'tag' }, [`Alternativ ${item.number}`]),
-        el('span', { class: `score score-${safeId(item.scoreGroup)}` }, [`Samlet vurdering: ${item.score}`]),
-        item.recommended ? el('span', { class: 'recommended-chip' }, ['Anbefalt']) : el('span', { class: 'pill' }, [item.category]),
-      ]),
-      el('div', { class: 'alternative-card-head' }, [
-        el('div', {}, [
+    const isOpen = state.open.has(item.id);
+    const toggle = () => {
+      if (state.open.has(item.id)) state.open.delete(item.id);
+      else state.open.add(item.id);
+      update();
+      window.requestAnimationFrame(() => {
+        const active = document.getElementById(item.id);
+        if (active && isOpen === false) active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      });
+    };
+
+    return el('article', { class: `alternative-card alternative-accordion-card ${item.recommended ? 'recommended' : ''} ${isOpen ? 'is-open' : ''}`.trim(), id: item.id }, [
+      el('button', {
+        class: 'alternative-accordion-trigger',
+        type: 'button',
+        'aria-expanded': isOpen ? 'true' : 'false',
+        'aria-controls': `${item.id}-panel`,
+        onclick: toggle,
+      }, [
+        el('div', { class: 'alternative-accordion-number' }, [`${item.number}`]),
+        el('div', { class: 'alternative-accordion-main' }, [
+          el('div', { class: 'alternative-card-top' }, [
+            el('span', { class: 'tag' }, [`Alternativ ${item.number}`]),
+            el('span', { class: `score score-${safeId(item.scoreGroup)}` }, [`Samlet vurdering: ${item.score}`]),
+            item.recommended ? el('span', { class: 'recommended-chip' }, ['Anbefalt']) : el('span', { class: 'pill' }, [item.category]),
+          ]),
           el('h3', {}, [item.title]),
           el('p', { class: 'alternative-role' }, [item.role]),
         ]),
-        el('div', { class: 'alternative-score-box' }, [
+        el('div', { class: 'alternative-accordion-side' }, [
           el('span', {}, ['Vurdering']),
           el('strong', {}, [item.score]),
+          el('em', {}, [isOpen ? 'Lukk' : 'Åpne']),
         ]),
+        el('span', { class: 'accordion-chevron', 'aria-hidden': 'true' }, ['⌄']),
       ]),
-      el('p', { class: 'alternative-recommendation' }, [el('strong', {}, ['Anbefaling: ']), item.recommendation]),
-      el('p', { class: 'alternative-description' }, [item.description]),
-      el('div', { class: 'alternative-columns' }, [
-        renderList('Fordeler', item.advantages, 'alt-list positives'),
-        renderList('Ulemper', item.disadvantages, 'alt-list negatives'),
-      ]),
-      renderList('Viktige risikoer', item.risks, 'alt-list risks'),
-      el('div', { class: 'alternative-fit-grid' }, [
-        el('div', {}, [el('strong', {}, ['Passer best når']), el('p', {}, [item.bestFor])]),
-        el('div', {}, [el('strong', {}, ['Forutsetninger for å lykkes']), el('p', {}, [item.prerequisites])]),
+      el('div', { class: 'alternative-accordion-panel', id: `${item.id}-panel`, 'aria-hidden': isOpen ? 'false' : 'true' }, [
+        el('p', { class: 'alternative-recommendation' }, [el('strong', {}, ['Anbefaling: ']), item.recommendation]),
+        el('p', { class: 'alternative-description' }, [item.description]),
+        el('div', { class: 'alternative-columns' }, [
+          renderList('Fordeler', item.advantages, 'alt-list positives'),
+          renderList('Ulemper', item.disadvantages, 'alt-list negatives'),
+        ]),
+        renderList('Viktige risikoer', item.risks, 'alt-list risks'),
+        el('div', { class: 'alternative-fit-grid' }, [
+          el('div', {}, [el('strong', {}, ['Passer best når']), el('p', {}, [item.bestFor])]),
+          el('div', {}, [el('strong', {}, ['Forutsetninger for å lykkes']), el('p', {}, [item.prerequisites])]),
+        ]),
       ]),
     ]);
   }
 
   function renderCompactAlternatives(items) {
-    return el('section', { class: 'alternative-compact-grid' }, items.map((item) => el('a', { class: `alternative-compact-card ${item.recommended ? 'recommended' : ''}`, href: `#${item.id}` }, [
-      el('div', { class: 'alternative-compact-number' }, [`${item.number}`]),
-      el('div', {}, [
-        el('span', { class: 'pill' }, [item.category]),
-        el('h3', {}, [item.title]),
-        el('p', {}, [item.recommendation]),
-        el('div', { class: 'alternative-compact-meta' }, [
-          el('strong', {}, [item.score]),
-          el('span', {}, [item.role]),
+    return el('section', { class: 'alternative-compact-grid accordion-compact-grid' }, items.map((item) => {
+      const isOpen = state.open.has(item.id);
+      return el('article', { class: `alternative-compact-card compact-accordion-card ${item.recommended ? 'recommended' : ''} ${isOpen ? 'is-open' : ''}`.trim(), id: item.id }, [
+        el('button', {
+          class: 'compact-accordion-trigger',
+          type: 'button',
+          'aria-expanded': isOpen ? 'true' : 'false',
+          onclick: () => {
+            if (state.open.has(item.id)) state.open.delete(item.id);
+            else state.open.add(item.id);
+            update();
+          },
+        }, [
+          el('div', { class: 'alternative-compact-number' }, [`${item.number}`]),
+          el('div', {}, [
+            el('span', { class: 'pill' }, [item.category]),
+            el('h3', {}, [item.title]),
+            el('div', { class: 'alternative-compact-meta' }, [
+              el('strong', {}, [item.score]),
+              el('span', {}, [item.role]),
+            ]),
+          ]),
+          el('span', { class: 'accordion-chevron', 'aria-hidden': 'true' }, ['⌄']),
         ]),
-      ]),
-    ])));
+        el('div', { class: 'compact-accordion-panel', 'aria-hidden': isOpen ? 'false' : 'true' }, [
+          el('p', {}, [item.recommendation]),
+          el('p', {}, [item.description]),
+        ]),
+      ]);
+    }));
   }
 
   function update() {
@@ -671,8 +724,228 @@ function renderAlternatives() {
 }
 
 
+
+function renderServices() {
+  const container = document.querySelector('[data-services]');
+  const services = window.NC_SERVICES;
+  if (!container || !Array.isArray(services)) return;
+
+  const state = {
+    search: '',
+    category: 'all',
+    level: 'all',
+    view: 'detailed',
+    open: new Set(),
+  };
+
+  function applyFilters(items) {
+    return items.filter((item) => {
+      const haystack = normalize([
+        item.title,
+        item.tag,
+        item.category,
+        item.level,
+        item.summary,
+        item.purpose,
+        item.goodFor,
+        ...(item.deliverables || []),
+        ...(item.outputs || []),
+        ...(item.includes || []),
+      ].join(' '));
+      const matchesSearch = !state.search || haystack.includes(normalize(state.search));
+      const matchesCategory = state.category === 'all' || item.category === state.category;
+      const matchesLevel = state.level === 'all' || item.level === state.level;
+      return matchesSearch && matchesCategory && matchesLevel;
+    });
+  }
+
+  function renderServicesDashboard(filteredItems) {
+    const categories = getUnique(services.map((item) => item.category)).length;
+    const outputs = services.reduce((total, item) => total + (item.outputs || []).length, 0);
+
+    function statCard({ variant = '', icon, label, value, subLabel }) {
+      return el('article', { class: `roadmap-stat service-stat ${variant}`.trim() }, [
+        el('span', { class: 'roadmap-stat-icon', 'aria-hidden': 'true' }, [icon]),
+        el('div', { class: 'roadmap-stat-body' }, [
+          el('span', { class: 'stat-label' }, [label]),
+          el('div', { class: 'stat-value-row' }, [
+            el('strong', {}, [String(value)]),
+            subLabel ? el('small', {}, [subLabel]) : el('small', { class: 'is-empty' }, ['']),
+          ]),
+        ]),
+      ]);
+    }
+
+    return el('section', { class: 'roadmap-dashboard services-dashboard', 'aria-label': 'Tjenesteoversikt' }, [
+      statCard({ variant: 'primary-stat service-main-stat', icon: '▦', label: 'Tjenester', value: services.length, subLabel: `${filteredItems.length} vises` }),
+      statCard({ variant: 'service-category-stat', icon: '◇', label: 'Kategorier', value: categories, subLabel: 'fagområder' }),
+      statCard({ variant: 'service-output-stat', icon: '✓', label: 'Leveranser', value: outputs, subLabel: 'eksempler' }),
+      statCard({ variant: 'filtered-stat', icon: '⌕', label: 'Aktivt utvalg', value: filteredItems.length, subLabel: 'treff' }),
+    ]);
+  }
+
+  function renderServiceControls() {
+    const categories = getUnique(services.map((item) => item.category));
+    const levels = getUnique(services.map((item) => item.level));
+
+    function selectControl({ icon, label, select }) {
+      return el('label', { class: 'select-control' }, [
+        el('span', { class: 'control-icon', 'aria-hidden': 'true' }, [icon]),
+        el('span', { class: 'sr-only' }, [label]),
+        select,
+        el('span', { class: 'select-arrow', 'aria-hidden': 'true' }, ['⌄']),
+      ]);
+    }
+
+    const search = el('input', {
+      class: 'control-input',
+      type: 'search',
+      placeholder: 'Søk i tjenester …',
+      value: state.search,
+      oninput: (event) => {
+        state.search = event.target.value;
+        update();
+      },
+    });
+
+    const categorySelect = el('select', {
+      class: 'control-select',
+      onchange: (event) => {
+        state.category = event.target.value;
+        update();
+      },
+    }, [option('all', 'Alle kategorier', state.category), ...categories.map((category) => option(category, category, state.category))]);
+
+    const levelSelect = el('select', {
+      class: 'control-select',
+      onchange: (event) => {
+        state.level = event.target.value;
+        update();
+      },
+    }, [option('all', 'Alle nivåer', state.level), ...levels.map((level) => option(level, level, state.level))]);
+
+    const viewButton = el('button', {
+      class: `toggle-control ${state.view === 'compact' ? 'is-on' : ''}`,
+      type: 'button',
+      'aria-pressed': state.view === 'compact' ? 'true' : 'false',
+      onclick: () => {
+        state.view = state.view === 'detailed' ? 'compact' : 'detailed';
+        update();
+      },
+    }, [
+      el('span', { class: 'toggle-switch', 'aria-hidden': 'true' }, [el('span', {}, [])]),
+      el('span', {}, ['Kompakt visning']),
+    ]);
+
+    const resetButton = el('button', {
+      class: 'mini-button ghost reset-button',
+      type: 'button',
+      onclick: () => {
+        state.search = '';
+        state.category = 'all';
+        state.level = 'all';
+        update();
+      },
+    }, [el('span', { 'aria-hidden': 'true' }, ['↻']), el('span', {}, ['Nullstill filter'])]);
+
+    return el('section', { class: 'roadmap-controls services-controls', role: 'search', 'aria-label': 'Filtrer tjenester' }, [
+      el('div', { class: 'search-control' }, [
+        el('span', { class: 'search-icon', 'aria-hidden': 'true' }, ['⌕']),
+        search,
+      ]),
+      el('div', { class: 'control-grid services-control-grid' }, [
+        selectControl({ icon: '◇', label: 'Kategorifilter', select: categorySelect }),
+        selectControl({ icon: '▱', label: 'Nivåfilter', select: levelSelect }),
+        viewButton,
+        resetButton,
+      ]),
+    ]);
+  }
+
+  function renderServiceList(title, items, className) {
+    return el('div', { class: className }, [
+      el('h4', {}, [title]),
+      el('ul', {}, (items || []).map((item) => el('li', {}, [item]))),
+    ]);
+  }
+
+  function renderServiceAccordion(item) {
+    const isOpen = state.open.has(item.id);
+    const toggle = () => {
+      if (state.open.has(item.id)) state.open.delete(item.id);
+      else state.open.add(item.id);
+      update();
+    };
+
+    return el('article', { class: `service-accordion-card ${isOpen ? 'is-open' : ''}`, id: item.id }, [
+      el('button', {
+        class: 'service-accordion-trigger',
+        type: 'button',
+        'aria-expanded': isOpen ? 'true' : 'false',
+        'aria-controls': `${item.id}-panel`,
+        onclick: toggle,
+      }, [
+        el('div', { class: 'service-icon' }, [item.icon || '▦']),
+        el('div', { class: 'service-heading' }, [
+          el('div', { class: 'alternative-card-top' }, [
+            el('span', { class: 'tag' }, [item.tag]),
+            el('span', { class: 'pill' }, [item.category]),
+            el('span', { class: 'pill' }, [item.level]),
+          ]),
+          el('h3', {}, [item.title]),
+          el('p', {}, [item.summary]),
+        ]),
+        el('div', { class: 'service-side' }, [
+          el('span', {}, ['Typisk leveranse']),
+          el('strong', {}, [item.delivery || 'Rådgivning']),
+          el('em', {}, [isOpen ? 'Lukk' : 'Åpne']),
+        ]),
+        el('span', { class: 'accordion-chevron', 'aria-hidden': 'true' }, ['⌄']),
+      ]),
+      el('div', { class: 'service-accordion-panel', id: `${item.id}-panel`, 'aria-hidden': isOpen ? 'false' : 'true' }, [
+        el('p', { class: 'service-purpose' }, [item.purpose]),
+        el('div', { class: 'service-detail-grid' }, [
+          renderServiceList('Innhold i tjenesten', item.includes, 'alt-list positives'),
+          renderServiceList('Typiske leveranser', item.outputs, 'alt-list'),
+        ]),
+        el('div', { class: 'alternative-fit-grid service-fit-grid' }, [
+          el('div', {}, [el('strong', {}, ['Passer best når']), el('p', {}, [item.goodFor])]),
+          el('div', {}, [el('strong', {}, ['Kundefordel']), el('p', {}, [item.value])]),
+        ]),
+      ]),
+    ]);
+  }
+
+  function renderCompactServices(items) {
+    return el('section', { class: 'services-accordion-list compact-service-list' }, items.map((item) => renderServiceAccordion(item)));
+  }
+
+  function update() {
+    const filteredItems = applyFilters(services);
+    container.innerHTML = '';
+    container.appendChild(el('section', { class: 'roadmap-command-center services-command' }, [
+      renderServicesDashboard(filteredItems),
+      renderServiceControls(),
+    ]));
+
+    if (!filteredItems.length) {
+      container.appendChild(el('div', { class: 'info-card empty-state' }, [
+        el('div', { class: 'tag' }, ['Ingen treff']),
+        el('h3', {}, ['Fant ingen tjenester med valgt filter']),
+        el('p', {}, ['Prøv å nullstille filteret eller søk på et annet begrep.']),
+      ]));
+      return;
+    }
+
+    container.appendChild(el('section', { class: `services-accordion-list ${state.view === 'compact' ? 'is-compact' : ''}` }, filteredItems.map(renderServiceAccordion)));
+  }
+
+  update();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   document.body.classList.add('js-loaded');
   renderRoadmap();
   renderAlternatives();
+  renderServices();
 });

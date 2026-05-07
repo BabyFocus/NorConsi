@@ -17,15 +17,21 @@ Funksjoner:
 - filter på status, tema og fase
 - kompakt/fasevis visning
 - lokale avhukinger for fullførte milepæler via `localStorage`
-- cache-busting på CSS/JS med `?v=5`
+- cache-busting på CSS/JS med `?v=6`
 
 Roadmap-innholdet kan endres i `roadmap.html` under `window.NC_ROADMAP = { ... }`.
 
 ## Alternativer
 
-Alternativer-siden er også dynamisk og bruker samme visuelle stil som roadmap-siden. Den har statuskort, søk, filter på vurdering/type/rolle, kompakt visning og dynamisk sammenligningstabell.
+Alternativer-siden er også dynamisk og bruker samme visuelle stil som roadmap-siden. Den har statuskort, søk, filter på vurdering/type/rolle, kompakt visning, dynamisk sammenligningstabell og lukkede accordion-bokser som kan åpnes.
 
 Alternativene kan endres i `alternatives.html` under `window.NC_ALTERNATIVES = [ ... ]`.
+
+## Tjenester
+
+Tjenester-siden er gjort dynamisk med statuskort, søk, filter på kategori/nivå og lukkede accordion-bokser som kan åpnes.
+
+Tjenestene kan endres i `services.html` under `window.NC_SERVICES = [ ... ]`.
 
 ## Feilsøking
 
