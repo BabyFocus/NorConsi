@@ -1,43 +1,52 @@
 <!doctype html>
 <html lang="no">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Produktifisering | Norconsult OT Cyber AI</title>
-  <link rel="stylesheet" href="./assets/styles.css?v=8"/>
-  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kravmatrise</title>
+  <style>
+:root{--bg:#071421;--ink:#e8f1f8;--muted:#a8bdcd;--line:rgba(255,255,255,.14);--accent:#00a0a0;--accent2:#4bb3fd;--warm:#ffb84d;--radius:22px;font-family:Inter,Segoe UI,Arial,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 20% 0%,#123a56 0%,var(--bg) 35%,#050c14 100%);color:var(--ink);line-height:1.55}a{color:#d8f4ff;text-decoration:none}.site-header{position:sticky;top:0;background:rgba(7,20,33,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);z-index:10}.nav{max-width:1380px;margin:auto;padding:14px 22px;display:flex;justify-content:space-between;gap:18px}.brand{font-weight:800;white-space:nowrap}.nav-links{display:flex;gap:11px;color:var(--muted);font-size:13.5px;flex-wrap:wrap;justify-content:flex-end}.section{max-width:1320px;margin:auto;padding:52px 22px}.page-hero{text-align:center;max-width:1080px;margin:auto;padding:66px 22px 28px}.eyebrow{color:var(--accent2);font-weight:800;text-transform:uppercase;letter-spacing:.14em;font-size:13px}h1{font-size:clamp(36px,5.2vw,64px);line-height:1.03;letter-spacing:-.04em;margin:14px 0}h2{font-size:31px;margin:0 0 14px}h3{margin-top:0}.muted,.page-hero p{color:var(--muted);font-size:18px}.info-card{background:linear-gradient(180deg,rgba(255,255,255,.085),rgba(255,255,255,.035));border:1px solid var(--line);border-radius:var(--radius);padding:22px}.recommended{border-left:4px solid var(--accent)}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.table{width:100%;border-collapse:collapse;margin:12px 0 28px}.table th,.table td{padding:12px 13px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.table th{background:rgba(255,255,255,.08)}.small{font-size:14px;color:var(--muted)}.footer{border-top:1px solid var(--line);color:var(--muted);padding:32px;text-align:center}.tag{display:inline-block;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:4px 10px;font-size:12px;color:#d8edf8;background:rgba(255,255,255,.06);margin-bottom:8px}li{color:var(--muted);margin-bottom:5px}
+.hm-badge{display:inline-block;min-width:86px;text-align:center;border-radius:999px;padding:4px 9px;font-size:12px;font-weight:700;border:1px solid rgba(255,255,255,.18)}.hm-high{background:rgba(40,211,154,.20);color:#d8fff2;border-color:rgba(40,211,154,.40)}.hm-medhigh{background:rgba(75,179,253,.18);color:#d8f4ff;border-color:rgba(75,179,253,.38)}.hm-med{background:rgba(255,184,77,.16);color:#fff0d5;border-color:rgba(255,184,77,.38)}.hm-low{background:rgba(255,255,255,.08);color:#d7e2ea;border-color:rgba(255,255,255,.18)}.heatmap-table td:nth-child(n+2):nth-child(-n+6){white-space:nowrap;text-align:center}
+@media(max-width:1100px){.grid-3{grid-template-columns:1fr}.nav-links{display:none}.table{font-size:14px}}
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <nav class="nav">
-      <a class="brand" href="./index.html"><span class="brand-mark"></span><span>Norconsult OT Cyber AI</span></a>
-      <div class="nav-links"><a href="./roadmap.html">Roadmap</a><a href="./delivery.html">Leveransemodell</a><a href="./productization.html" aria-current="page">Produktifisering</a><a href="./services.html">Tjenester</a><a href="./alternatives.html">Alternativer</a><a href="./business-case.html">Business case</a><a href="./mandate.html">Mandat</a><a href="./topics.html">Flere temaer</a></div>
-    </nav>
-  </header>
-  <main>
-    <section class="page-hero">
-      <div class="eyebrow">Produktifisering</div>
-      <h1>Standardiserte tjenester med fastpris og høyere kvalitet</h1>
-      <p>Produktifisering skal gi lavere leveransekost, mindre personavhengighet, bedre kvalitet og bedre margin.</p>
-    </section>
-    <section class="section">
-      <div class="grid-3">
-        <article class="info-card"><div class="tag">Prinsipp</div><h3>Fra timer til produkter</h3><p>Vi selger klart definerte tjenester: risikovurdering, dokumentasjon, design, testing, verifikasjon og ledelsesrapport.</p></article>
-        <article class="info-card"><div class="tag">Margin</div><h3>Fastpris med effektiv leveranse</h3><p>Ved gjenbruk av maler, sjekklister og metoder kan leveransen prises med forutsigbar fastpris og bedre margin.</p></article>
-        <article class="info-card"><div class="tag">Reinvestering</div><h3>Profitt bygger kapabilitet</h3><p>Marginen reinvesteres i metodeverk, verktøy, AI-støtte, opplæring og videreutvikling.</p></article>
-      </div>
-    </section>
-    <section class="section">
-      <h2>Minimum for hver tjenestepakke</h2>
-      <div class="grid-4">
-        <article class="info-card"><h3>Scope</h3><p>Tydelig avgrensning, inngangsdata og hva som ikke inngår.</p></article>
-        <article class="info-card"><h3>Metode</h3><p>Fast arbeidsflyt med kvalitetssikring og dokumenterte valg.</p></article>
-        <article class="info-card"><h3>Leveranse</h3><p>Rapport, register, diagram, beslutningsunderlag eller testresultat.</p></article>
-        <article class="info-card"><h3>Prislogikk</h3><p>Forutsigbar prisramme og kriterier for tillegg.</p></article>
-      </div>
-    </section>
-  </main>
-  <footer class="footer">Utkast til strategisk veikart • Norconsult OT, Cyber, Network Engineering og AI Governance • 2026</footer>
-
+<header class="site-header"><nav class="nav"><a class="brand" href="index.html">Norconsult OT Cyber AI</a><div class="nav-links"><a href="decision-brief.html">Kortversjon</a><a href="market-entry.html">Markedsinntreden</a><a href="business-case.html">Business case</a><a href="alternatives.html">Alternativer</a><a href="assumptions.html">Antakelser</a><a href="formulas.html">Formler</a><a href="sensitivity.html">Sensitivitet</a><a href="legal-references.html">Lovlenker</a><a href="requirements-matrix.html">Kravmatrise</a><a href="competencies.html">Kompetanse</a><a href="delivery.html">Leveranse</a><a href="services.html">Tjenester</a><a href="topics.html">Videre arbeid</a></div></nav></header>
+<main>
+  <section class="page-hero">
+    <div class="eyebrow">Kompetanse- og kravmatrise</div>
+    <h1>Matrise for regelverk og kompetansebehov</h1>
+    <p>Denne siden viser hvilke kompetanseområder som typisk kreves for å møte relevante krav i norsk og europeisk regelverk. Den er ment som beslutningsgrunnlag for kapabilitetsbygging, ikke som juridisk tolkning.</p>
+  </section>
+  <section class="section">
+    <h2>Matrise regelverk × kompetanseområde</h2>
+    <table class="table heatmap-table"><thead><tr><th>Regelverk / område</th><th>Cyber</th><th>Nettverk</th><th>AI</th><th>Automasjon</th><th>Telekom</th><th>Kommentar</th></tr></thead><tbody><tr><td><strong>Digitalsikkerhetsloven</strong></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-med">Middels</span></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-high">Høy</span></td><td>Tverrsektorielle krav til styring, risiko, sikkerhetstiltak og hendelser.</td></tr><tr><td><strong>Sikkerhetsloven</strong></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-med">Middels</span></td><td><span class="hm-badge hm-medhigh">Middels/Høy</span></td><td><span class="hm-badge hm-high">Høy</span></td><td>Skjermingsverdige verdier, nasjonal sikkerhet og leverandør-/infrastruktursikkerhet.</td></tr><tr><td><strong>Kraftberedskapsforskriften</strong></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-low">Lav/Middels</span></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-high">Høy</span></td><td>Driftskontrollsystemer, kraftsensitiv informasjon, beredskap og samband.</td></tr><tr><td><strong>Drikkevann / vannforsyning</strong></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-med">Middels</span></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-high">Høy</span></td><td>SCADA, vannverk, beredskap og samfunnsviktig tjenesteleveranse.</td></tr><tr><td><strong>Vegdata / trafikk</strong></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-medhigh">Middels/Høy</span></td><td><span class="hm-badge hm-medhigh">Middels/Høy</span></td><td><span class="hm-badge hm-high">Høy</span></td><td>Trafikkstyring, vegdata, sensorer, kontrollrom og digitale grensesnitt.</td></tr><tr><td><strong>Ekomloven</strong></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-med">Middels</span></td><td><span class="hm-badge hm-med">Middels</span></td><td><span class="hm-badge hm-high">Høy</span></td><td>Elektronisk kommunikasjon, datasentre, beredskap og forsvarlig sikkerhet.</td></tr><tr><td><strong>Helse / Normen</strong></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-medhigh">Middels/Høy</span></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-med">Middels</span></td><td><span class="hm-badge hm-medhigh">Middels/Høy</span></td><td>Personvern, helsedata, tilgangsstyring, tilgjengelighet og robusthet.</td></tr><tr><td><strong>Petroleum / styringsforskriften</strong></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-med">Middels</span></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-high">Høy</span></td><td>Barrierer, kontrollsystemer, fjernoperasjon og storulykkerisiko.</td></tr><tr><td><strong>CRA</strong></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-medhigh">Middels/Høy</span></td><td><span class="hm-badge hm-med">Middels</span></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-medhigh">Middels/Høy</span></td><td>Produkter med digitale elementer, sårbarhetshåndtering og sikker utvikling.</td></tr><tr><td><strong>NIS2 / CER</strong></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-med">Middels</span></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-high">Høy</span></td><td>Kritiske tjenester, ledelsesansvar, robusthet og hendelsesrapportering.</td></tr><tr><td><strong>Maskinforordningen</strong></td><td><span class="hm-badge hm-medhigh">Middels/Høy</span></td><td><span class="hm-badge hm-medhigh">Middels/Høy</span></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-med">Middels</span></td><td>Maskinsikkerhet, programvare, tilkobling og beskyttelse mot korrupsjon.</td></tr><tr><td><strong>DORA</strong></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-med">Middels</span></td><td><span class="hm-badge hm-med">Middels</span></td><td><span class="hm-badge hm-medhigh">Middels/Høy</span></td><td>ICT-risikostyring, testing, tredjepartsrisiko og digital robusthet.</td></tr><tr><td><strong>EU AI Act</strong></td><td><span class="hm-badge hm-medhigh">Middels/Høy</span></td><td><span class="hm-badge hm-med">Middels</span></td><td><span class="hm-badge hm-high">Høy</span></td><td><span class="hm-badge hm-medhigh">Middels/Høy</span></td><td><span class="hm-badge hm-med">Middels</span></td><td>AI governance, risikostyring, dokumentasjon, datakvalitet og menneskelig kontroll.</td></tr></tbody></table>
+    <p class="small">Skala: <span class="hm-badge hm-high">Høy</span> <span class="hm-badge hm-medhigh">Middels/Høy</span> <span class="hm-badge hm-med">Middels</span> <span class="hm-badge hm-low">Lav/Middels</span></p>
+  </section>
+  <section class="section">
+    <h2>Kompetanseområdene forklart</h2>
+    <div class="grid-3"><article class="info-card"><h3>Cybersikkerhet</h3><ul><li>sikkerhetsstyring og ledelsesforankring</li><li>risikovurdering og risikohåndtering</li><li>hendelseshåndtering og varsling</li><li>leverandørstyring og sikkerhetskrav</li><li>dokumentasjon, avvik og kontinuerlig forbedring</li></ul></article><article class="info-card"><h3>Nettverk</h3><ul><li>nettverksarkitektur og segmentering</li><li>fjernaksess og tilgangskontroll</li><li>logging, overvåking og sporbarhet</li><li>redundans, robusthet og tilgjengelighet</li><li>grensesnitt mellom IT, OT og ekom</li></ul></article><article class="info-card"><h3>AI</h3><ul><li>AI governance og klassifisering av brukstilfeller</li><li>datakvalitet, personvern og sporbarhet</li><li>risikostyring for AI-støttet beslutning og analyse</li><li>dokumentasjon, menneskelig kontroll og kvalitetssikring</li><li>kontrollert bruk av AI i kravarbeid og rapportering</li></ul></article><article class="info-card"><h3>Automasjon</h3><ul><li>PLS, SCADA, DCS og driftskontrollsystemer</li><li>sikkerhetsfunksjoner og prosessforståelse</li><li>endringskontroll og konfigurasjonsstyring</li><li>FAT/SAT, testprosedyrer og avvikshåndtering</li><li>IEC 62443-prinsipper og sone/conduit-tenkning</li></ul></article><article class="info-card"><h3>Telekommunikasjon</h3><ul><li>samband og robust kommunikasjon</li><li>redundans og alternative kommunikasjonsveier</li><li>datasenter- og ekomavhengigheter</li><li>beredskapskommunikasjon og krisehåndtering</li><li>kommunikasjon mellom feltutstyr, kontrollrom og sentrale tjenester</li></ul></article></div>
+  </section>
+  <section class="section">
+    <h2>Tre regelverksgrupper</h2>
+    <p class="muted">Regelverkene kan forstås som tre overlappende drivere for kompetansebygging.</p>
+    <div class="grid-3"><article class="info-card"><div class="tag">Tverrsektorielle sikkerhetskrav</div><h3>Digitalsikkerhetsloven, Sikkerhetsloven, NIS2 og CER.</h3><p>Krever særlig styring, risikohåndtering, hendelseshåndtering, ledelsesforankring, leverandørstyring og dokumentert robusthet.</p></article><article class="info-card"><div class="tag">Sektorregelverk for kritisk infrastruktur</div><h3>Kraft, vann, veg/trafikk, ekom, helse og petroleum.</h3><p>Krever særlig OT/automasjon, nettverk, telekom, beredskap, fysisk/digital robusthet, testing og verifikasjon.</p></article><article class="info-card"><div class="tag">Produkt- og teknologiregelverk</div><h3>Cyber Resilience Act, Maskinforordningen, EU AI Act og DORA.</h3><p>Krever særlig sikker utvikling, teknisk dokumentasjon, sårbarhetshåndtering, AI governance, livsløpsoppfølging og verifikasjon.</p></article></div>
+  </section>
+  <section class="section">
+    <h2>Hva betyr dette for Norconsult?</h2>
+    <div class="info-card recommended"><p><strong>Samlet peker regelverkene på at Norconsult må ha et dokumenterbart minimumsnivå av kompetanse innen cyber, nettverk, OT/automasjon, telekommunikasjon og AI governance.</strong> Dette er nødvendig både for å levere rådgivning til kunder og for å gjennomføre egne prosjekter der digitale systemer, kritisk infrastruktur eller samfunnsviktige tjenester inngår.</p></div>
+    <table class="table"><thead><tr><th>Konsekvens</th><th>Betydning</th></tr></thead><tbody><tr><td><strong>Minimumskompetanse må etableres</strong></td><td>Dette er ikke bare en valgfri satsing, men en nødvendig leveransekapabilitet for regulerte prosjekter.</td></tr><tr><td><strong>Kompetansen må være tverrfaglig</strong></td><td>IT-sikkerhet alene er ikke nok. Kravene treffer også OT, automasjon, telekom, nettverk, beredskap og prosjektgjennomføring.</td></tr><tr><td><strong>Dokumentasjon blir viktigere</strong></td><td>Kunder vil etterspørre sporbarhet, kravmatriser, beslutningsgrunnlag, testbevis og avvikshåndtering.</td></tr><tr><td><strong>Leverandørstyring blir kritisk</strong></td><td>Krav må inn i konkurransegrunnlag, kontrakter, FAT/SAT og akseptansekriterier.</td></tr><tr><td><strong>Produktifisering er mulig</strong></td><td>Mange krav går igjen på tvers av sektorer og kan omsettes til standardiserte tjenester, maler og fastprisprodukter.</td></tr></tbody></table>
+  </section>
+  <section class="section">
+    <h2>Anbefalt minimumskapabilitet</h2>
+    <div class="grid-3">
+      <article class="info-card recommended"><h3>1. Styring og compliance</h3><p>Virkeområde, kravforståelse, risikovurdering, styringssystem, ledelsesrapportering og leverandørkrav.</p></article>
+      <article class="info-card recommended"><h3>2. Teknisk OT / nettverk / telekom</h3><p>Segmentering, fjernaksess, driftskontrollsystemer, samband, redundans, logging, backup og teknisk verifikasjon.</p></article>
+      <article class="info-card recommended"><h3>3. Produktifisert leveranse</h3><p>Standard scope, maler, kravbibliotek, testprosedyrer, rapportformater og kvalitetssikrede fastprisprodukter.</p></article>
+    </div>
+  </section>
+</main>
+<footer class="footer">Beslutningsunderlag • Sammenhengende webutkast v11 • Regelverk, timing, kompetanse og scenarioanslag • 2026</footer>
 </body>
 </html>

@@ -1,186 +1,548 @@
 <!doctype html>
 <html lang="no">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Alternativer | Norconsult OT Cyber AI</title>
-  <link rel="stylesheet" href="./assets/styles.css?v=8"/>
-  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Alternativer</title>
+    <link rel="stylesheet" href="assets/styles.css">
 </head>
+
 <body>
-  <header class="site-header">
-    <nav class="nav">
-      <a class="brand" href="./index.html"><span class="brand-mark"></span><span>Norconsult OT Cyber AI</span></a>
-      <div class="nav-links"><a href="./roadmap.html">Roadmap</a><a href="./delivery.html">Leveransemodell</a><a href="./productization.html">Produktifisering</a><a href="./services.html">Tjenester</a><a href="./alternatives.html" aria-current="page">Alternativer</a><a href="./business-case.html">Business case</a><a href="./mandate.html">Mandat</a><a href="./topics.html">Flere temaer</a></div>
-    </nav>
-  </header>
-  <main>
-    <section class="page-hero">
-      <div class="eyebrow">Organisasjonsalternativer</div>
-      <h1>Evaluering av fem mulige modeller</h1>
-      <p>Formålet er å skille mellom lavfriksjonsløsninger, tekniske fagavdelinger, strategiske paraplyer, anbefalt kraftsentermodell og mulig ekstern akselerator.</p>
-    </section>
-    <section class="alternatives-wrap" data-alternatives>
-      <div class="info-card empty-state"><div class="tag">Laster</div><h3>Alternativer lastes …</h3><p>Kontroller at <code>app.js</code> ligger i rotmappen dersom denne teksten blir stående.</p></div>
-    </section>
-  </main>
-  <footer class="footer">Utkast til strategisk veikart • Norconsult OT, Cyber, Network Engineering og AI Governance • 2026</footer>
-  <script>
-    window.NC_ALTERNATIVES = [
-  {
-    "id": "alt-1",
-    "number": 1,
-    "title": "Fortsette som før, men koordinere på tvers",
-    "score": "Lav–middels",
-    "scoreGroup": "Lav–middels",
-    "role": "Overgang/minimumstiltak",
-    "category": "Koordinering",
-    "recommendation": "Bør kun brukes som minimumstiltak eller overgangsmodell.",
-    "description": "Markedsområdene består som i dag, men det etableres selskapsmessige mekanismer for koordinering, felles metodikk, felles kravbibliotek og felles salgsstøtte.",
-    "advantages": [
-      "Lav organisatorisk friksjon og rask å innføre.",
-      "Bevarer eksisterende kundeansvar og P&L-struktur.",
-      "Kan fungere som lavterskel start dersom ledelsen ikke vil etablere ny enhet umiddelbart.",
-      "Gir noe samordning av metodeverk, tilbud og kompetanse."
-    ],
-    "disadvantages": [
-      "Siloene består i praksis dersom insentiver ikke endres.",
-      "Ingen tydelig markedsidentitet eller nasjonalt kraftsenter.",
-      "Kompetansebygging blir treg og personavhengig.",
-      "Risiko for at cyber blir tilleggspunkt i prosjekter, ikke strategisk satsning."
-    ],
-    "risks": [
-      "Blir en faggruppe uten reell myndighet.",
-      "Markedsområder prioriterer kortsiktig egen inntjening fremfor felles posisjon.",
-      "Konkurrenter tar premissgiverrollen før Norconsult klarer å mobilisere."
-    ],
-    "bestFor": "Kort overgangsfase, eller dersom organisasjonen ikke er klar for dedikert satsning.",
-    "prerequisites": "Må ha konsernforankret krav om bruk av felles metodeverk, definert inntektsdeling og obligatorisk involvering i strategiske tilbud."
-  },
-  {
-    "id": "alt-2",
-    "number": 2,
-    "title": "Automasjonsavdeling",
-    "score": "Middels",
-    "scoreGroup": "Middels",
-    "role": "Viktig teknisk komponent",
-    "category": "Teknisk base",
-    "recommendation": "God teknisk base, men for smal alene.",
-    "description": "Samle satsningen primært rundt automasjon, PLS/SCADA, OT-design, industriell nettverksteknikk og tekniske prosjektleveranser.",
-    "advantages": [
-      "Nærmest de faktiske OT-systemene og anleggene.",
-      "Sterk troverdighet i tekniske prosjekter og hos driftsmiljøer.",
-      "God plattform for IEC 62443, sone/conduit, FAT/SAT og leverandørkrav.",
-      "Kan raskt skape praktisk verdi i prosjekter."
-    ],
-    "disadvantages": [
-      "Kan bli oppfattet som PLS/SCADA-fag, ikke strategisk cybersikkerhet.",
-      "Risikerer å undervurdere juridisk, ledelsesmessig, AI- og totalforsvarsdimensjon.",
-      "Kan få svakere kobling til IT-sikkerhet, governance og compliance.",
-      "Kan bli for lite synlig for toppledelse hos kundene."
-    ],
-    "risks": [
-      "Blir teknisk leveranseavdeling uten kommersiell premiumposisjon.",
-      "For lite mandat til å påvirke anskaffelser og konsern-/kommunenivå hos kunder.",
-      "Mangler bredde til NIS2/CRA/AI governance og styreansvar."
-    ],
-    "bestFor": "Kunder med konkrete OT-prosjekter, modernisering av automasjon, nettverksdesign og teknisk verifikasjon.",
-    "prerequisites": "Må kobles tett med cyber governance, nettverk, compliance og forretningsutvikling."
-  },
-  {
-    "id": "alt-3",
-    "number": 3,
-    "title": "Totalforsvarsavdeling / sikkerhetsfokusert task force",
-    "score": "Middels–høy",
-    "scoreGroup": "Middels–høy",
-    "role": "God strategisk paraply",
-    "category": "Strategisk paraply",
-    "recommendation": "Sterkt strategisk narrativ, men må avgrenses for å bli kommersielt presist.",
-    "description": "Etablere en samlet sikkerhetsfokusert task force med totalforsvar, beredskap, fysisk sikkerhet, digital sikkerhet, kritisk infrastruktur og organisatorisk robusthet som ramme.",
-    "advantages": [
-      "Sterk posisjonering mot samfunnskritiske kunder og offentlig sektor.",
-      "Kobler digital sikkerhet, fysisk infrastruktur, beredskap og robusthet.",
-      "Gir tyngde i ledelsesdialog og strategiske diskusjoner.",
-      "Kan samle flere sikkerhetsfag som i dag ligger spredt."
-    ],
-    "disadvantages": [
-      "Kan bli for bredt og uklart som kommersiell tjeneste.",
-      "Risiko for at OT, nettverk og automasjon drukner i beredskaps- og policytema.",
-      "Kan bli vanskelig å bemanne med riktig teknisk dybde.",
-      "Kan oppfattes som politisk/strategisk mer enn operativt nyttig."
-    ],
-    "risks": [
-      "For bred portefølje gir lav leveransekraft.",
-      "Uklar P&L og uklart eierskap mellom markedsområder.",
-      "Kundene ser ikke konkret hva de kan kjøpe."
-    ],
-    "bestFor": "Ledelsesrådgivning, sektorstrategi, kommuner, offentlig infrastruktur og beredskapsrelaterte programmer.",
-    "prerequisites": "Bør brukes som strategisk paraply, men med tydelige produktlinjer for OT, cyber, nettverk og AI."
-  },
-  {
-    "id": "alt-4",
-    "number": 4,
-    "title": "CSNE + Automasjon",
-    "score": "Høy",
-    "scoreGroup": "Høy",
-    "role": "Anbefalt hovedmodell",
-    "category": "Kraftsenter",
-    "recommendation": "Anbefalt hovedmodell.",
-    "description": "Etablere et kraftsenter som kombinerer cyber security, network engineering, OT, automasjon, IEC 62443, verifikasjon og AI governance.",
-    "recommended": true,
-    "advantages": [
-      "Treffer det reelle kundebehovet: OT + nettverk + cyber + automasjon + compliance.",
-      "Kombinerer teknisk dybde med regulatorisk og kommersiell relevans.",
-      "Egner seg godt for produktifiserte leveranser, rammeavtaler og managed advisory.",
-      "Kan være premissgiver i prosjekter før løsningene anskaffes og bygges.",
-      "Gir tydelig markedsposisjon uten å bli for bredt."
-    ],
-    "disadvantages": [
-      "Krever sterkt mandat på tvers av markedsområder.",
-      "Kan skape intern kamp om kunder, timer og resultatføring.",
-      "Må rekruttere eller utvikle spisskompetanse raskt.",
-      "Krever aktiv ledelse for å unngå at nettverk/cyber og automasjon blir separate sub-siloer."
-    ],
-    "risks": [
-      "Uten inntektsdelingsmodell kan markedsområder motarbeide eller omgå enheten.",
-      "For svak seniorbemanning gir lav troverdighet mot krevende kunder.",
-      "Hvis den må levere normal margin fra dag én, bygges ikke metodeverk og marked raskt nok."
-    ],
-    "bestFor": "Kritisk infrastruktur, industri, VA, energi, samferdsel, havn, byggautomasjon og prosjekter med OT/IT-grensesnitt.",
-    "prerequisites": "Bør etableres som task force med 18–24 mnd oppstartsmandat, lavere profittkrav og harde KPI-er."
-  },
-  {
-    "id": "alt-5",
-    "number": 5,
-    "title": "Houmb AS / kjøp eller partnerskap",
-    "score": "Middels–høy som akselerator",
-    "scoreGroup": "Middels–høy",
-    "role": "Mulig akselerator",
-    "category": "Ekstern akselerator",
-    "recommendation": "Bør vurderes som akselerator, ikke som eneste strategi.",
-    "description": "Kjøp, strategisk partnerskap eller tett samarbeid med et spesialisert miljø for å raskt tilføre spisskompetanse, metodeverk, kunder eller sertifiseringer.",
-    "advantages": [
-      "Rask tilgang på kompetanse og markedstroverdighet.",
-      "Kan redusere tid til første modne leveranse.",
-      "Kan gi sertifiseringer, referanser og seniorprofiler som ellers tar lang tid å bygge.",
-      "Kan fungere som katalysator for intern kulturendring."
-    ],
-    "disadvantages": [
-      "Integrasjonsrisiko, kulturforskjeller og mulig kompetanseflukt.",
-      "Kan bli personavhengig dersom nøkkelpersoner slutter.",
-      "Oppkjøp løser ikke automatisk Norconsults interne silo- og insentivutfordringer.",
-      "Kan bli dyrt dersom markedet allerede priser cyberkompetanse høyt."
-    ],
-    "risks": [
-      "Man kjøper kapasitet, men ikke nødvendigvis organisatorisk gjennomføringsevne.",
-      "Eksternt miljø kan bli isolert i Norconsult i stedet for integrert.",
-      "Uklare roller mot eksisterende fagmiljøer kan skape friksjon."
-    ],
-    "bestFor": "Rask oppskalering av spisskompetanse, spesielt innen OT-cyber, revisjon, hendelseshåndtering, IEC 62443 eller sikkerhetsarkitektur.",
-    "prerequisites": "Må kombineres med intern kraftsentermodell, tydelig integrasjonsplan og retensjon av nøkkelpersoner."
-  }
-];
-  </script>
-  <script src="./app.js?v=8" defer></script>
+    <header class="site-header">
+        <nav class="nav"><a class="brand" href="index.html">Norconsult OT Cyber AI</a>
+            <div class="nav-links"><a href="decision-brief.html">Kortversjon</a><a
+                    href="market-entry.html">Markedsinntreden</a><a href="business-case.html">Business case</a><a
+                    href="alternatives.html">Alternativer</a><a href="assumptions.html">Antakelser</a><a
+                    href="formulas.html">Formler</a><a href="sensitivity.html">Sensitivitet</a><a
+                    href="legal-references.html">Lovlenker</a><a href="requirements-matrix.html">Kravmatrise</a><a
+                    href="competencies.html">Kompetanse</a><a href="delivery.html">Leveranse</a><a
+                    href="services.html">Tjenester</a><a href="topics.html">Videre arbeid</a></div>
+        </nav>
+    </header>
+    <main>
+        <section class="page-hero">
+            <div class="eyebrow">Analyse over alternativer</div>
+            <h1>Vurdering med faste kriterier og vekting</h1>
+            <p>Alternativene vurderes mot samme kriterier for å gjøre anbefalingen etterprøvbar. Alternativ 4 anbefales
+                fordi det gir best samlet balanse mellom markedsposisjon, produktifisering, intern gjennomføringsevne og
+                økonomisk potensial.</p>
+        </section>
+        <section class="section">
+            <h2>Score (1-5)</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Alternativ</th>
+                        <th>Markedsposisjon<br><span class="small">25%</span></th>
+                        <th>Evne til produktifisering<br><span class="small">20%</span></th>
+                        <th>Intern gjennomføringsevne<br><span class="small">20%</span></th>
+                        <th>Økonomisk potensial<br><span class="small">20%</span></th>
+                        <th>Risiko/kompleksitet<br><span class="small">15%</span></th>
+                        <th>Vektet score</th>
+                        <th>5-års resultat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1. Fortsette som før + koordinering på tvers</td>
+                        <td>2.0</td>
+                        <td>1.8</td>
+                        <td>3.0</td>
+                        <td>1.8</td>
+                        <td>2.4</td>
+                        <td><strong>2.18</strong></td>
+                        <td>13,0 MNOK</td>
+                    </tr>
+                    <tr>
+                        <td>2. Automasjonsavdeling</td>
+                        <td>2.7</td>
+                        <td>2.8</td>
+                        <td>3.2</td>
+                        <td>2.8</td>
+                        <td>2.8</td>
+                        <td><strong>2.85</strong></td>
+                        <td>35,0 MNOK</td>
+                    </tr>
+                    <tr>
+                        <td>3. Totalforsvarsavdeling / sikkerhetsfokusert task force</td>
+                        <td>3.6</td>
+                        <td>2.7</td>
+                        <td>2.6</td>
+                        <td>3.0</td>
+                        <td>2.6</td>
+                        <td><strong>2.95</strong></td>
+                        <td>41,0 MNOK</td>
+                    </tr>
+                    <tr>
+                        <td>4. CSNE + Automasjon + Telekom</td>
+                        <td>4.8</td>
+                        <td>4.7</td>
+                        <td>4.0</td>
+                        <td>4.8</td>
+                        <td>3.8</td>
+                        <td><strong>4.47</strong></td>
+                        <td>97,4 MNOK</td>
+                    </tr>
+                    <tr>
+                        <td>5. Houmb AS / kjøp eller partnerskap</td>
+                        <td>3.8</td>
+                        <td>3.4</td>
+                        <td>2.8</td>
+                        <td>3.4</td>
+                        <td>2.6</td>
+                        <td><strong>3.26</strong></td>
+                        <td>45,0 MNOK</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="section">
+            <h2>Kost/profitt-sammenligning</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Alternativ</th>
+                        <th>Score</th>
+                        <th>5-års omsetning</th>
+                        <th>5-års kostnad</th>
+                        <th>5-års resultat</th>
+                        <th>Break-even</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1. Fortsette som før + koordinering på tvers</td>
+                        <td>2.18/5</td>
+                        <td>68,0 MNOK</td>
+                        <td>55,0 MNOK</td>
+                        <td>13,0 MNOK</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>2. Automasjonsavdeling</td>
+                        <td>2.85/5</td>
+                        <td>176,0 MNOK</td>
+                        <td>141,0 MNOK</td>
+                        <td>35,0 MNOK</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>3. Totalforsvarsavdeling / sikkerhetsfokusert task force</td>
+                        <td>2.95/5</td>
+                        <td>279,0 MNOK</td>
+                        <td>238,0 MNOK</td>
+                        <td>41,0 MNOK</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>4. CSNE + Automasjon + Telekom</td>
+                        <td>4.47/5</td>
+                        <td>379,7 MNOK</td>
+                        <td>282,3 MNOK</td>
+                        <td>97,4 MNOK</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>5. Houmb AS / kjøp eller partnerskap</td>
+                        <td>3.26/5</td>
+                        <td>378,0 MNOK</td>
+                        <td>333,0 MNOK</td>
+                        <td>45,0 MNOK</td>
+                        <td>4</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="section">
+            <h2>Detaljert vurdering</h2>
+            <article class="info-card ">
+                <div class="tag">Alternativ 1</div>
+                <h3>Fortsette som før + koordinering på tvers</h3>
+                <p><span class="score">Vektet score: 2.18/5 • 5-års resultat: 13,0 MNOK</span></p>
+                <p>Markedsområdene består som i dag. Det etableres felles forum, maler, kravbibliotek og
+                    koordineringsmekanismer, men ingen sterk sentral leveransefunksjon.</p>
+                <div class="grid-2">
+                    <div>
+                        <h4>Fordeler</h4>
+                        <ul>
+                            <li>Lav organisatorisk friksjon.</li>
+                            <li>Lav initial investering.</li>
+                            <li>Bevarer eksisterende kundeansvar.</li>
+                            <li>Kan gi noe effekt gjennom felles maler.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Ulemper</h4>
+                        <ul>
+                            <li>Kan oppstå organisatoriske siloer over tid.</li>
+                            <li>Svak markedsprofil.</li>
+                            <li>Lite egnet for fastprisprodukter.</li>
+                            <li>Høy personavhengighet.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p><strong>Tolkning:</strong> Minimumstiltak. Kan redusere intern friksjon, men er for svakt dersom
+                    målet er tydelig markedsposisjon og produktifiserte tjenester.</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>År</th>
+                            <th>Ansatte</th>
+                            <th>Omsetning</th>
+                            <th>Kostnad</th>
+                            <th>Resultat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>3</td>
+                            <td>4,0 MNOK</td>
+                            <td>5,0 MNOK</td>
+                            <td>-1,0 MNOK</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>5</td>
+                            <td>8,0 MNOK</td>
+                            <td>7,5 MNOK</td>
+                            <td>0,5 MNOK</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>7</td>
+                            <td>13,0 MNOK</td>
+                            <td>10,5 MNOK</td>
+                            <td>2,5 MNOK</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>9</td>
+                            <td>18,0 MNOK</td>
+                            <td>14,0 MNOK</td>
+                            <td>4,0 MNOK</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>12</td>
+                            <td>25,0 MNOK</td>
+                            <td>18,0 MNOK</td>
+                            <td>7,0 MNOK</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+            <article class="info-card ">
+                <div class="tag">Alternativ 2</div>
+                <h3>Automasjonsavdeling</h3>
+                <p><span class="score">Vektet score: 2.85/5 • 5-års resultat: 35,0 MNOK</span></p>
+                <p>Satsningen legges primært rundt automasjon, OT-design, PLS/SCADA, industriell nettverksteknikk og
+                    tekniske prosjektleveranser.</p>
+                <div class="grid-2">
+                    <div>
+                        <h4>Fordeler</h4>
+                        <ul>
+                            <li>Sterk nærhet til OT-systemer.</li>
+                            <li>God praktisk verdi i prosjekter.</li>
+                            <li>Relevant for IEC 62443 og FAT/SAT.</li>
+                            <li>Kan raskt kobles inn i eksisterende prosjekter.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Ulemper</h4>
+                        <ul>
+                            <li>Kan bli for smalt. Kan fortsatt oppstå siloer</li>
+                            <li>Telekom, AI governance og compliance kan bli underprioritert.</li>
+                            <li>Svakere posisjon mot toppledelse.</li>
+                            <li>Begrenser bred produktkatalog.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p><strong>Tolkning:</strong> Automasjon er en nødvendig komponent, men modellen er for smal alene.</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>År</th>
+                            <th>Ansatte</th>
+                            <th>Omsetning</th>
+                            <th>Kostnad</th>
+                            <th>Resultat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>6</td>
+                            <td>8,0 MNOK</td>
+                            <td>12,0 MNOK</td>
+                            <td>-4,0 MNOK</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>10</td>
+                            <td>18,0 MNOK</td>
+                            <td>17,0 MNOK</td>
+                            <td>1,0 MNOK</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>16</td>
+                            <td>32,0 MNOK</td>
+                            <td>26,0 MNOK</td>
+                            <td>6,0 MNOK</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>22</td>
+                            <td>48,0 MNOK</td>
+                            <td>36,0 MNOK</td>
+                            <td>12,0 MNOK</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>30</td>
+                            <td>70,0 MNOK</td>
+                            <td>50,0 MNOK</td>
+                            <td>20,0 MNOK</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+            <article class="info-card ">
+                <div class="tag">Alternativ 3</div>
+                <h3>Totalforsvarsavdeling / sikkerhetsfokusert task force</h3>
+                <p><span class="score">Vektet score: 2.95/5 • 5-års resultat: 41,0 MNOK</span></p>
+                <p>En bred sikkerhets- og robusthetsenhet med totalforsvar, beredskap, fysisk sikkerhet, digital
+                    sikkerhet og kritisk infrastruktur som ramme.</p>
+                <div class="grid-2">
+                    <div>
+                        <h4>Fordeler</h4>
+                        <ul>
+                            <li>Sterk strategisk fortelling.</li>
+                            <li>Kobler digital og fysisk robusthet.</li>
+                            <li>Styrker samfunnsrolle.</li>
+                            <li>God ramme for ledelsesdialog.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Ulemper</h4>
+                        <ul>
+                            <li>Kan bli for bredt. Mister OT fokuset.</li>
+                            <li>Vanskeligere å selge som konkrete produkter.</li>
+                            <li>Krever sterk porteføljestyring.</li>
+                            <li>Kan bli dyrere å bygge.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p><strong>Tolkning:</strong> God strategisk paraply, men bør ikke være eneste operative modell.</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>År</th>
+                            <th>Ansatte</th>
+                            <th>Omsetning</th>
+                            <th>Kostnad</th>
+                            <th>Resultat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>8</td>
+                            <td>10,0 MNOK</td>
+                            <td>17,0 MNOK</td>
+                            <td>-7,0 MNOK</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>14</td>
+                            <td>26,0 MNOK</td>
+                            <td>26,0 MNOK</td>
+                            <td>0,0 MNOK</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>22</td>
+                            <td>50,0 MNOK</td>
+                            <td>42,0 MNOK</td>
+                            <td>8,0 MNOK</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>32</td>
+                            <td>78,0 MNOK</td>
+                            <td>63,0 MNOK</td>
+                            <td>15,0 MNOK</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>45</td>
+                            <td>115,0 MNOK</td>
+                            <td>90,0 MNOK</td>
+                            <td>25,0 MNOK</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+            <article class="info-card recommended">
+                <div class="tag">Alternativ 4</div>
+                <h3>CSNE + Automasjon + Telekom</h3>
+                <p><span class="score">Vektet score: 4.47/5 • 5-års resultat: 97,4 MNOK</span></p>
+                <p>Tverrmarkeds kraftsenter som samler cyber security, network engineering, telekom, OT, automasjon, IEC
+                    62443, verifikasjon og AI governance.</p>
+                <div class="grid-2">
+                    <div>
+                        <h4>Fordeler</h4>
+                        <ul>
+                            <li>Samler kompetansene kundene trenger.</li>
+                            <li>Best egnet for fastprisprodukter.</li>
+                            <li>Reduserer personavhengighet.</li>
+                            <li>Gir tydelig markedsposisjon.</li>
+                            <li>Høyest beregnet 5-års resultat.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Ulemper</h4>
+                        <ul>
+                            <li>Krever sterkt mandat.</li>
+                            <li>Krever aktiv endringsledelse.</li>
+                            <li>Må håndtere ressurs- og budsjettinsentiver.</li>
+                            <li>Høyere initial investering.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p><strong>Tolkning:</strong> Anbefalt hovedmodell. Gir best samlet balanse mellom marked, økonomi,
+                    produktifisering og intern gjennomføringsevne.</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>År</th>
+                            <th>Ansatte</th>
+                            <th>Omsetning</th>
+                            <th>Kostnad</th>
+                            <th>Resultat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>8</td>
+                            <td>11,9 MNOK</td>
+                            <td>18,3 MNOK</td>
+                            <td>-6,4 MNOK</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>16</td>
+                            <td>33,3 MNOK</td>
+                            <td>28,8 MNOK</td>
+                            <td>4,5 MNOK</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>28</td>
+                            <td>66,1 MNOK</td>
+                            <td>50,3 MNOK</td>
+                            <td>15,8 MNOK</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>42</td>
+                            <td>106,3 MNOK</td>
+                            <td>75,6 MNOK</td>
+                            <td>30,7 MNOK</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>60</td>
+                            <td>162,1 MNOK</td>
+                            <td>109,3 MNOK</td>
+                            <td>52,8 MNOK</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+            <article class="info-card ">
+                <div class="tag">Alternativ 5</div>
+                <h3>Houmb AS / kjøp eller partnerskap</h3>
+                <p><span class="score">Vektet score: 3.26/5 • 5-års resultat: 45,0 MNOK</span></p>
+                <p>Kjøp, partnerskap eller tett strategisk samarbeid med et spesialisert miljø for å akselerere
+                    kompetanse og markedstroverdighet.</p>
+                <div class="grid-2">
+                    <div>
+                        <h4>Fordeler</h4>
+                        <ul>
+                            <li>Rask tilgang på spisskompetanse.</li>
+                            <li>Kan redusere tid til marked.</li>
+                            <li>Kan øke troverdighet.</li>
+                            <li>Kan kombineres med alternativ 4.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Ulemper</h4>
+                        <ul>
+                            <li>Høy initial kapitalbinding.</li>
+                            <li>Integrasjonsrisiko.</li>
+                            <li>Løser ikke interne siloer alene.</li>
+                            <li>Kan bli personavhengig.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p><strong>Tolkning:</strong> Kan være akselerator, men bør ikke erstatte intern organisering.</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>År</th>
+                            <th>Ansatte</th>
+                            <th>Omsetning</th>
+                            <th>Kostnad</th>
+                            <th>Resultat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>10</td>
+                            <td>15,0 MNOK</td>
+                            <td>28,0 MNOK</td>
+                            <td>-13,0 MNOK</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>18</td>
+                            <td>38,0 MNOK</td>
+                            <td>40,0 MNOK</td>
+                            <td>-2,0 MNOK</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>28</td>
+                            <td>70,0 MNOK</td>
+                            <td>60,0 MNOK</td>
+                            <td>10,0 MNOK</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>40</td>
+                            <td>105,0 MNOK</td>
+                            <td>85,0 MNOK</td>
+                            <td>20,0 MNOK</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>55</td>
+                            <td>150,0 MNOK</td>
+                            <td>120,0 MNOK</td>
+                            <td>30,0 MNOK</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+        </section>
+    </main>
+    <footer class="footer">Beslutningsunderlag • Sammenhengende webutkast v11 • Regelverk, timing, kompetanse og
+        scenarioanslag • 2026</footer>
 </body>
+
 </html>

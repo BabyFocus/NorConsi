@@ -1,197 +1,83 @@
 <!doctype html>
 <html lang="no">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Roadmap | Norconsult OT Cyber AI</title>
-  <link rel="stylesheet" href="./assets/styles.css?v=8"/>
-  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sensitivitet</title>
+    <link rel="stylesheet" href="assets/styles.css">
 </head>
+
 <body>
-  <header class="site-header">
-    <nav class="nav">
-      <a class="brand" href="./index.html"><span class="brand-mark"></span><span>Norconsult OT Cyber AI</span></a>
-      <div class="nav-links"><a href="./roadmap.html" aria-current="page">Roadmap</a><a href="./delivery.html">Leveransemodell</a><a href="./productization.html">Produktifisering</a><a href="./services.html">Tjenester</a><a href="./alternatives.html">Alternativer</a><a href="./business-case.html">Business case</a><a href="./mandate.html">Mandat</a><a href="./topics.html">Flere temaer</a></div>
-    </nav>
-  </header>
-  <main>
-    <section class="page-hero">
-      <div class="eyebrow">Interaktiv roadmap</div>
-      <h1>Fra markedsvindu til produktleverende kraftsenter</h1>
-      <p>Filtrer, åpne faser og marker milepæler som ferdige. Fremdrift lagres lokalt i nettleseren.</p>
-    </section>
-    <section class="roadmap-wrap" data-roadmap>
-      <div class="info-card empty-state"><div class="tag">Laster</div><h3>Roadmap lastes …</h3><p>Kontroller at <code>app.js</code> ligger i rotmappen dersom denne teksten blir stående.</p></div>
-    </section>
-  </main>
-  <footer class="footer">Utkast til strategisk veikart • Norconsult OT, Cyber, Network Engineering og AI Governance • 2026</footer>
-  <script>
-    window.NC_ROADMAP = {
-  "phases": [
-    {
-      "id": "phase-0",
-      "kicker": "Fase 0",
-      "title": "Strategisk beslutning og mandat",
-      "period": "0–1 måned",
-      "summary": "Avklar om satsningen skal være en reell funksjon med mandat, eller bare et koordinerende fagforum.",
-      "outcome": "Konsernmandat, sponsor, styringsgruppe, økonomisk ramme og prioriterte første leveranser.",
-      "items": [
-        {
-          "id": "p0-1",
-          "date": "Uke 1",
-          "title": "Beslutning om retning",
-          "tag": "Strategi",
-          "status": "Pågår",
-          "owner": "Sponsor",
-          "detail": "Fastslå at Norconsult skal bygge en samlet posisjon innen OT, cyber, nettverk, automasjon og AI governance. Beslutningen må beskrive hvorfor satsningen er strategisk viktig, og hva som skjer dersom man venter for lenge.",
-          "deliverables": [
-            "Beslutningsnotat",
-            "Foreløpig sponsor og styringsgruppe",
-            "Avklart ambisjonsnivå"
-          ],
-          "success": "Ledelsen aksepterer at passivitet er en strategisk risiko."
-        },
-        {
-          "id": "p0-2",
-          "date": "Uke 2",
-          "title": "Mandat og spilleregler",
-          "tag": "Governance",
-          "status": "Planlagt",
-          "owner": "Styringsgruppe",
-          "detail": "Definer myndighet, økonomi, rapportering og inntektsdeling. Mandatet må også beskrive når task force skal kobles inn i tilbud og prosjekter.",
-          "deliverables": [
-            "Mandattekst",
-            "RACI/rollemodell",
-            "Prinsipp for inntektsdeling"
-          ],
-          "success": "Satsningen får virkemidler, ikke bare ansvar."
-        }
-      ]
-    },
-    {
-      "id": "phase-1",
-      "kicker": "Fase 1",
-      "title": "Produktisere leveransemodellen",
-      "period": "0–3 måneder",
-      "summary": "Gå fra personbasert rådgivning til standardiserte tjenester som kan selges, leveres og kvalitetssikres likt.",
-      "outcome": "Produktkatalog, playbooks, sjekklister, maler og fastprisintervaller for første portefølje.",
-      "items": [
-        {
-          "id": "p1-1",
-          "date": "Måned 1",
-          "title": "Produktkatalog v1",
-          "tag": "Produkt",
-          "status": "Planlagt",
-          "owner": "Fagleder",
-          "detail": "Definer de første tjenestene: modenhetsvurdering, OT-risiko, sone/conduit, leverandørkrav, design review og verifikasjon.",
-          "deliverables": [
-            "Produktark",
-            "Scope og avgrensning",
-            "Prisintervaller"
-          ],
-          "success": "Kunder og prosjektledere forstår hva de kan kjøpe."
-        },
-        {
-          "id": "p1-2",
-          "date": "Måned 2–3",
-          "title": "Leveranse-playbook",
-          "tag": "Kvalitet",
-          "status": "Planlagt",
-          "owner": "Leveranseansvarlig",
-          "detail": "Beskriv hvordan leveranser startes, gjennomføres, kvalitetssikres og avsluttes. Målet er lavere personavhengighet og enklere skalering.",
-          "deliverables": [
-            "Playbook",
-            "Maler",
-            "QA-sjekkliste",
-            "Kompetansematrise"
-          ],
-          "success": "Flere personer kan levere samme tjeneste med lik kvalitet."
-        }
-      ]
-    },
-    {
-      "id": "phase-2",
-      "kicker": "Fase 2",
-      "title": "Tre leveransekanaler",
-      "period": "3–6 måneder",
-      "summary": "Kraftsentret må fungere både i prosjekter, som intern enablement og som direkte rådgivning mot kunde.",
-      "outcome": "Operativ leveransemodell med tydelige bestillingspunkter og pilotkunder.",
-      "items": [
-        {
-          "id": "p2-1",
-          "date": "Måned 3",
-          "title": "Prosjektintegrert leveranse",
-          "tag": "Prosjekt",
-          "status": "Planlagt",
-          "owner": "Prosjektstøtte",
-          "detail": "Lag en enkel inngang for prosjektledere som trenger krav, arkitektur, dokumentasjon, FAT/SAT eller verifikasjon i prosjekter.",
-          "deliverables": [
-            "Bestillingsskjema",
-            "Standard arbeidsomfang",
-            "Prosjektpakker"
-          ],
-          "success": "Prosjektledere kan bestille forutsigbar bistand uten å lete etter enkeltpersoner."
-        },
-        {
-          "id": "p2-2",
-          "date": "Måned 5–6",
-          "title": "Direkte rådgivning og pilotkunder",
-          "tag": "Kunde",
-          "status": "Planlagt",
-          "owner": "Marked",
-          "detail": "Selg lavterskelpakker til utvalgte kunder innen VA, energi, industri, samferdsel og byggtekniske systemer.",
-          "deliverables": [
-            "Kundeprodukter",
-            "Salgsark",
-            "Pilotpipeline"
-          ],
-          "success": "Minst 3–5 betalte piloter eller konkrete tilbud er i arbeid."
-        }
-      ]
-    },
-    {
-      "id": "phase-3",
-      "kicker": "Fase 3",
-      "title": "Skalering og permanent modell",
-      "period": "6–18 måneder",
-      "summary": "Bruk erfaringene fra piloter til å justere portefølje, bemanning, økonomimodell og permanent organisering.",
-      "outcome": "Beslutningsgrunnlag for videreføring, justering eller integrering i permanent linjeorganisasjon.",
-      "items": [
-        {
-          "id": "p3-1",
-          "date": "Måned 6–12",
-          "title": "Skalere kapasitet og metodeverk",
-          "tag": "Skalering",
-          "status": "Planlagt",
-          "owner": "Task force",
-          "detail": "Bygg flere leveranseteam, etabler intern opplæring og mål gjenbruk av maler, sjekklister og rapportstruktur.",
-          "deliverables": [
-            "Opplæringspakke",
-            "Kvalitetsmålinger",
-            "Rekrutteringsbehov"
-          ],
-          "success": "Leveransekapasiteten øker uten tilsvarende økning i nøkkelpersonrisiko."
-        },
-        {
-          "id": "p3-2",
-          "date": "Måned 12–18",
-          "title": "Beslutningsport for videreføring",
-          "tag": "Ledelse",
-          "status": "Planlagt",
-          "owner": "Styringsgruppe",
-          "detail": "Vurder økonomi, kundeverdi, kompetansebygging, pipeline og intern samhandling før videre organisering besluttes.",
-          "deliverables": [
-            "Sluttrapport",
-            "Økonomisk status",
-            "Anbefalt permanent modell"
-          ],
-          "success": "Ledelsen har et tydelig grunnlag for å videreføre eller justere satsningen."
-        }
-      ]
-    }
-  ]
-};
-  </script>
-  <script src="./app.js?v=8" defer></script>
+    <header class="site-header">
+        <nav class="nav"><a class="brand" href="index.html">Norconsult OT Cyber AI</a>
+            <div class="nav-links"><a href="decision-brief.html">Kortversjon</a><a
+                    href="market-entry.html">Markedsinntreden</a><a href="business-case.html">Business case</a><a
+                    href="alternatives.html">Alternativer</a><a href="assumptions.html">Antakelser</a><a
+                    href="formulas.html">Formler</a><a href="sensitivity.html">Sensitivitet</a><a
+                    href="legal-references.html">Lovlenker</a><a href="requirements-matrix.html">Kravmatrise</a><a
+                    href="competencies.html">Kompetanse</a><a href="delivery.html">Leveranse</a><a
+                    href="services.html">Tjenester</a><a href="topics.html">Videre arbeid</a></div>
+        </nav>
+    </header>
+    <main>
+        <section class="page-hero">
+            <div class="eyebrow">Sensitivitet</div>
+            <h1>Hvordan resultatet påvirkes av endrede premisser</h1>
+            <p>Sensitivitet er inkludert for å synliggjøre usikkerhet og unngå at business caset fremstår som en sikker
+                prognose. Tallene gjelder alternativ 4.</p>
+        </section>
+        <section class="section">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th>Timepris</th>
+                        <th>Fakturerbarhet år 5</th>
+                        <th>Salgstakt</th>
+                        <th>5-års resultat</th>
+                        <th>Kommentar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Lav</td>
+                        <td>1600 NOK</td>
+                        <td>65 %</td>
+                        <td>Lav</td>
+                        <td>48,0 MNOK</td>
+                        <td>Lavere timepris, tregere salg og svakere fakturerbarhet.</td>
+                    </tr>
+                    <tr>
+                        <td>Basis</td>
+                        <td>1800 NOK</td>
+                        <td>72 %</td>
+                        <td>Normal</td>
+                        <td>97,4 MNOK</td>
+                        <td>Hovedforutsetningene i modellen.</td>
+                    </tr>
+                    <tr>
+                        <td>Høy</td>
+                        <td>2000 NOK</td>
+                        <td>75 %</td>
+                        <td>Høy</td>
+                        <td>155,0 MNOK</td>
+                        <td>Sterkere betalingsvilje og høyere utnyttelse.</td>
+                    </tr>
+                    <tr>
+                        <td>Forsinket 18 mnd</td>
+                        <td>1800 NOK</td>
+                        <td>68 %</td>
+                        <td>Forsinket</td>
+                        <td>52,0 MNOK</td>
+                        <td>Sen etablering gir lavere 5-årseffekt og høyere posisjoneringskost.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer class="footer">Beslutningsunderlag • Sammenhengende webutkast v11 • Regelverk, timing, kompetanse og
+        scenarioanslag • 2026</footer>
 </body>
+
 </html>
