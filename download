@@ -1,1 +1,44 @@
-:root{--bg:#071421;--panel:#0e2234;--ink:#e8f1f8;--muted:#a8bdcd;--line:rgba(255,255,255,.14);--accent:#00a0a0;--accent2:#4bb3fd;--warm:#ffb84d;--danger:#ff6b5f;--ok:#28d39a;--shadow:0 22px 70px rgba(0,0,0,.35);--radius:26px;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 20% 0%,#123a56 0%,var(--bg) 35%,#050c14 100%);color:var(--ink);line-height:1.5}a{color:inherit;text-decoration:none}.site-header{position:sticky;top:0;z-index:30;backdrop-filter:blur(18px);background:rgba(7,20,33,.76);border-bottom:1px solid var(--line)}.nav{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:16px 22px}.brand{display:flex;align-items:center;gap:12px;font-weight:800}.brand-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 30px rgba(0,160,160,.45)}.nav-links{display:flex;gap:18px;font-size:14px;color:var(--muted)}.nav-links a:hover{color:var(--ink)}.hero{max-width:1180px;margin:0 auto;padding:74px 22px 54px;display:grid;grid-template-columns:1.15fr .85fr;gap:42px;align-items:center}.eyebrow{text-transform:uppercase;color:var(--accent2);font-weight:800;letter-spacing:.14em;font-size:13px}.hero h1{font-size:clamp(42px,6vw,76px);line-height:.96;margin:16px 0 22px;letter-spacing:-.055em}.hero p{font-size:20px;color:var(--muted);max-width:720px}.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}.button{border:1px solid var(--line);border-radius:999px;padding:13px 18px;background:rgba(255,255,255,.06);font-weight:750}.button.primary{background:linear-gradient(135deg,var(--accent),#0e7cc3);border-color:transparent}.hero-card,.info-card{background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.035));border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}.metric{background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:18px;padding:16px}.metric strong{display:block;font-size:27px;color:white}.metric span{color:var(--muted);font-size:13px}.section{max-width:1180px;margin:0 auto;padding:42px 22px}.section-title{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:24px}.section-title h2{font-size:34px;margin:0;letter-spacing:-.03em}.section-title p{color:var(--muted);max-width:620px;margin:0}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.info-card h3{margin:0 0 10px}.info-card p,.info-card li{color:var(--muted)}.tag{display:inline-flex;align-items:center;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:4px 10px;font-size:12px;color:#d8edf8;background:rgba(255,255,255,.06);margin-bottom:12px}.score{font-size:13px;color:#d8fff2;background:rgba(40,211,154,.08);border:1px solid rgba(40,211,154,.22);border-radius:999px;padding:5px 10px;display:inline-block}.roadmap-wrap{max-width:1180px;margin:0 auto;padding:18px 22px 80px}.phase{position:relative;display:grid;grid-template-columns:210px 1fr;gap:26px;border-top:1px solid var(--line);padding:28px 0}.phase:last-child{border-bottom:1px solid var(--line)}.phase::before{content:"";position:absolute;left:96px;top:0;bottom:0;width:2px;background:linear-gradient(var(--line),rgba(0,160,160,.45),var(--line))}.phase-dot{position:absolute;left:82px;top:35px;width:30px;height:30px;border-radius:50%;background:var(--bg);border:4px solid var(--accent);box-shadow:0 0 0 7px rgba(0,160,160,.12)}.phase-kicker{color:var(--accent2);font-size:13px;text-transform:uppercase;letter-spacing:.12em;font-weight:850}.phase-period{color:var(--muted);font-weight:700;margin-top:6px}.phase-card{border:1px solid var(--line);border-radius:var(--radius);background:rgba(255,255,255,.055);overflow:hidden;box-shadow:0 16px 50px rgba(0,0,0,.18)}.phase-button{width:100%;padding:24px 26px;background:transparent;border:0;color:inherit;text-align:left;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}.phase-button h3{font-size:28px;margin:0 0 8px}.phase-button p{margin:0;color:var(--muted)}.chev{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);color:var(--accent2);transition:.22s}.phase.open .chev{transform:rotate(180deg);background:rgba(0,160,160,.12)}.phase-panel{display:none;border-top:1px solid var(--line);padding:24px 26px 28px}.phase.open .phase-panel{display:block;animation:fadeUp .28s ease-out}.phase-outcome{background:rgba(0,160,160,.10);border:1px solid rgba(0,160,160,.25);border-radius:18px;padding:14px 16px;margin-bottom:24px;color:#dff}.timeline{position:relative;margin-left:8px;padding-left:28px}.timeline::before{content:"";position:absolute;left:7px;top:12px;bottom:12px;width:2px;background:linear-gradient(var(--accent2),var(--accent))}.timeline-item{position:relative;margin:0 0 18px}.timeline-point{position:absolute;left:-29px;top:7px;width:18px;height:18px;border-radius:50%;background:var(--accent2);border:4px solid #0c1d2c}.timeline-card{background:rgba(0,0,0,.18);border:1px solid var(--line);border-radius:20px;overflow:hidden}.timeline-trigger{width:100%;border:0;background:transparent;color:inherit;text-align:left;padding:18px 20px;display:grid;grid-template-columns:110px 1fr auto;gap:16px;align-items:center;cursor:pointer}.timeline-trigger:hover{background:rgba(255,255,255,.04)}.date{color:var(--warm);font-weight:850}.timeline-trigger h4{margin:0;font-size:19px}.pill{border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:5px 10px;font-size:12px;color:var(--muted)}.detail{display:none;padding:0 20px 20px 146px;color:var(--muted)}.timeline-item.active .detail{display:block;animation:fadeUp .22s ease-out}.detail strong{color:var(--ink)}.detail ul{margin:10px 0 0;padding-left:18px}.success{margin-top:14px;color:#d8fff2;background:rgba(40,211,154,.08);border:1px solid rgba(40,211,154,.22);border-radius:14px;padding:12px}.spotlight{outline:2px solid rgba(75,179,253,.42);box-shadow:0 0 0 9px rgba(75,179,253,.10)}.footer{border-top:1px solid var(--line);color:var(--muted);padding:36px 22px;text-align:center}.page-hero{max-width:980px;margin:0 auto;padding:70px 22px 30px;text-align:center}.page-hero h1{font-size:52px;letter-spacing:-.045em;margin:10px 0}.page-hero p{color:var(--muted);font-size:19px}.table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:18px}.table th,.table td{padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.10);text-align:left}.table th{color:white;background:rgba(255,255,255,.08)}.table td{color:var(--muted)}.alt-card{border-left:4px solid var(--accent2)}.alt-card.recommended{border-left-color:var(--accent)}.small{font-size:14px;color:var(--muted)}@keyframes fadeUp{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}@media(max-width:900px){.hero,.grid-3,.grid-2{grid-template-columns:1fr}.phase{grid-template-columns:1fr}.phase::before,.phase-dot,.phase-meta{display:none}.timeline-trigger{grid-template-columns:1fr}.detail{padding:0 18px 18px}.nav-links{display:none}}
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
+        with:
+          timeout: 900000

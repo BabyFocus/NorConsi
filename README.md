@@ -1,1 +1,226 @@
-<!doctype html><html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>organization.html</title><link rel="stylesheet" href="assets/styles.css"></head><body><header class="site-header"><nav class="nav"><a class="brand" href="index.html">Norconsult OT Cyber AI</a><div class="nav-links"><a href="roadmap.html">Roadmap</a><a href="delivery.html">Leveransemodell</a><a href="productization.html">Produktifisering</a><a href="services.html">Tjenester</a><a href="alternatives.html">Alternativer</a><a href="business-case.html">Business case</a><a href="topics.html">Flere temaer</a></div></nav></header><main><section class="page-hero"><div class="eyebrow">Organisering</div><h1>En funksjon, ikke en samling enkeltpersoner</h1><p>Ved å jobbe som funksjon kan gruppen dekke for hverandre, levere mer lik kvalitet og redusere risiko ved fravær eller nøkkelpersonavhengighet.</p></section><section class="section"><div class="grid-3"><article class="info-card"><h3>Felles playbook</h3><p>Alle leveranser følger samme metode, maler, kvalitetskontroll og leveranseformat.</p></article><article class="info-card"><h3>Rollebasert leveranse</h3><p>Oppdrag bemannes med roller, ikke bare navngitte eksperter. Flere kan fylle samme rolle.</p></article><article class="info-card"><h3>Insentiver</h3><p>Gruppeledere og markedsområder må få uttelling for å låne ut ressurser og samarbeide på tvers.</p></article></div></section></main><footer class="footer">Webutkast v5 • Produkt- og funksjonsorientert kraftsenter • 2026</footer></body></html>
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Oppstartsmandat | Norconsult OT Cyber AI</title>
+  <link rel="stylesheet" href="./assets/styles.css?v=8"/>
+  
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="./index.html"><span class="brand-mark"></span><span>Norconsult OT Cyber AI</span></a>
+      <div class="nav-links"><a href="./roadmap.html">Roadmap</a><a href="./delivery.html">Leveransemodell</a><a href="./productization.html">Produktifisering</a><a href="./services.html">Tjenester</a><a href="./alternatives.html">Alternativer</a><a href="./business-case.html">Business case</a><a href="./mandate.html" aria-current="page">Mandat</a><a href="./topics.html">Flere temaer</a></div>
+    </nav>
+  </header>
+  <main>
+    <section class="page-hero">
+      <div class="eyebrow">Oppstartsmandat</div>
+      <h1>Lavere profittkrav — høyere krav til fremdrift</h1>
+      <p>Mandatsiden er et dynamisk beslutningsunderlag med lukkede seksjoner for formål, styring, KPI-er og foreslått mandattekst.</p>
+    </section>
+    <section class="mandate-wrap" data-mandate>
+      <div class="info-card empty-state"><div class="tag">Laster</div><h3>Mandat lastes …</h3><p>Kontroller at <code>app.js</code> ligger i rotmappen dersom denne teksten blir stående.</p></div>
+    </section>
+  </main>
+  <footer class="footer">Utkast til strategisk veikart • Norconsult OT, Cyber, Network Engineering og AI Governance • 2026</footer>
+  <script>
+    window.NC_MANDATE = {
+  "summary": {
+    "period": "18 mnd",
+    "phases": "3",
+    "requirements": "8",
+    "governance": "Månedlig"
+  },
+  "sections": [
+    {
+      "id": "mandate-purpose",
+      "icon": "◎",
+      "tag": "Formål",
+      "category": "Strategi",
+      "status": "Beslutning",
+      "title": "Formål og ønsket effekt",
+      "summary": "Etablere et nasjonalt kraftsenter for OT, cyber, nettverk, automasjon og AI governance.",
+      "purpose": "Mandatet skal gi organisasjonen handlingsrom til å bygge et nytt leveranseområde før satsningen må vurderes på ordinær moden driftsmargin. Hensikten er ikke å lage en permanent unntakstilstand, men å gi nok tid til å utvikle marked, metodeverk, interne leveransemodeller og felles kommersiell posisjon.",
+      "includes": [
+        "Bygge et tverrfaglig miljø som kan støtte prosjekter med OT-, nettverks- og cybersikkerhetsbehov.",
+        "Standardisere leveranser slik at rådgivningen kan skaleres på tvers av markedsområder.",
+        "Styrke Norconsults posisjon i møte med regulatoriske krav, digitalisering av anlegg og økende behov for sikker drift.",
+        "Flytte sikkerhetsarbeid tidligere inn i prosjekter, anskaffelser og designbeslutninger."
+      ],
+      "outputs": [
+        "Godkjent mandat og styringsmodell.",
+        "Prioritert tjenesteportefølje.",
+        "Plan for pilotkunder og markedsområder.",
+        "Felles metodeverk og kravbibliotek."
+      ],
+      "decision": "Godkjenn et tidsavgrenset oppstartsmandat med tydelige leveransekrav, ikke kun et løst fagnettverk."
+    },
+    {
+      "id": "mandate-background",
+      "icon": "▦",
+      "tag": "Bakgrunn",
+      "category": "Marked",
+      "status": "Begrunnelse",
+      "title": "Hvorfor mandatet trengs nå",
+      "summary": "Markedet beveger seg fra enkeltstående tekniske oppdrag til dokumenterbar styring av digital sikkerhet i anlegg.",
+      "purpose": "Kunder innen industri, energi, vann, samferdsel, bygg og annen kritisk infrastruktur har behov for praktisk hjelp til å forstå, dokumentere og forbedre OT-sikkerhet. Samtidig sitter Norconsult på en unik kombinasjon av anleggsforståelse, prosjekterfaring, nettverkskompetanse, automasjon og rådgivning. Uten et tydelig mandat risikerer satsningen å bli fragmentert mellom eksisterende avdelinger og prosjektlinjer.",
+      "includes": [
+        "OT-sikkerhet treffer både teknisk design, drift, prosjektgjennomføring, anskaffelse, beredskap og ledelsesansvar.",
+        "Kundene trenger rådgivere som forstår både anlegg og cybersikkerhet, ikke bare generiske IT-kontroller.",
+        "Nye krav og forventninger skaper behov for dokumentasjon, modenhetsvurdering, risikovurdering, kravstilling og verifikasjon.",
+        "Norconsult kan ta en premissgiverrolle dersom miljøet samles og gis kommersiell retning."
+      ],
+      "outputs": [
+        "Markeds- og behovsbilde.",
+        "Prioriterte kundesegmenter.",
+        "Felles argumentasjon for salg og ledelsesdialog.",
+        "Beslutningsnotat for satsningen."
+      ],
+      "decision": "Bruk mandatet til å samle miljøet før markedet defineres av konkurrenter eller nisjeleverandører."
+    },
+    {
+      "id": "mandate-period",
+      "icon": "↗",
+      "tag": "Periode",
+      "category": "Styring",
+      "status": "Tidsavgrenset",
+      "title": "Mandatperiode og modenhetsporter",
+      "summary": "Oppstarten deles i etablering, traction og skalering, med tydelige beslutningsporter.",
+      "purpose": "Et tidsavgrenset mandat gjør satsningen etterprøvbar. Den skal ikke skjermes ubegrenset, men måles på riktig type fremdrift i riktig fase. I første fase er læring, portefølje og pilotpipeline viktigere enn margin. I senere faser må leveransegrad, salg og lønnsomhet gradvis normaliseres.",
+      "includes": [
+        "0–6 måneder: etablere mandat, kjernegruppe, tjenestepakker, salgsunderlag og første pilotpipeline.",
+        "6–12 måneder: gjennomføre betalte piloter, dokumentere kundeverdi og etablere inntektsdeling mellom involverte miljøer.",
+        "12–18 måneder: standardisere leveransemodell, bygge faglig kapasitet og vise vei mot normalisert margin.",
+        "18 måneder: beslutning om videreføring, justering eller integrering i permanent organisasjonsmodell."
+      ],
+      "outputs": [
+        "Faseplan med milepæler.",
+        "Gate-kriterier for hver fase.",
+        "Kvartalsvis statusrapport.",
+        "Beslutningsgrunnlag etter 18 måneder."
+      ],
+      "decision": "Mål satsningen på faseavhengige KPI-er, ikke bare ordinær avdelingsmargin fra første måned."
+    },
+    {
+      "id": "mandate-authority",
+      "icon": "☷",
+      "tag": "Myndighet",
+      "category": "Organisering",
+      "status": "Må avklares",
+      "title": "Myndighet, prioritering og beslutningsrom",
+      "summary": "Task force må ha nok myndighet til å prioritere tilbud, metodeverk og nøkkelressurser på tvers.",
+      "purpose": "Dersom satsningen bare blir et frivillig koordineringsforum, vil den få for lite gjennomføringskraft. Mandatet bør derfor avklare hvem som kan prioritere ressurser, hvem som eier tjenesteporteføljen, hvordan inntekter fordeles, og hvordan konflikter mellom markedsområder håndteres.",
+      "includes": [
+        "Rett til å etablere felles metodeverk, maler, tjenestepakker og kvalitetskrav.",
+        "Rett til å bli involvert i strategiske tilbud der OT, cyber, nettverk eller AI governance er relevant.",
+        "Tydelig modell for inntektsdeling og timeføring mellom task force og markedsområder.",
+        "Eskaleringspunkt når kortsiktig lokal optimalisering står i konflikt med satsningens mål."
+      ],
+      "outputs": [
+        "Beslutningsmatrise.",
+        "Ressurs- og prioriteringsmodell.",
+        "Prinsipper for inntektsdeling.",
+        "Mandat for porteføljestyring."
+      ],
+      "decision": "Gi task force et reelt operativt mandat, ikke bare et ansvar for å koordinere uten virkemidler."
+    },
+    {
+      "id": "mandate-delivery-model",
+      "icon": "▱",
+      "tag": "Leveransemodell",
+      "category": "Drift",
+      "status": "Etableres",
+      "title": "Task force som leveranse- og enablementmodell",
+      "summary": "Miljøet bør levere selv, men også gjøre resten av organisasjonen bedre til å selge og gjennomføre OT-cyberarbeid.",
+      "purpose": "Enheten bør fungere som både spissmiljø og intern enablementfunksjon. Den må kunne ta krevende leveranser selv, støtte tilbud, kvalitetssikre prosjektleveranser og bygge kompetanse i eksisterende markedsområder. Slik unngår man at satsningen blir en flaskehals eller en isolert spesialistgruppe.",
+      "includes": [
+        "Kjernegruppe med seniorprofiler innen OT-cyber, nettverk, automasjon, risikostyring og governance.",
+        "Faglige satellitter i markedsområdene som kan skaleres inn i oppdrag.",
+        "Standardiserte leveransepakker for modenhetsvurdering, risikovurdering, kravstilling, arkitektur og verifikasjon.",
+        "Felles salgsstøtte, tilbudstekst, referansearkitektur og kvalitetskontroll."
+      ],
+      "outputs": [
+        "Tjenestekatalog.",
+        "Leveransehåndbok.",
+        "Kompetanse- og sertifiseringsplan.",
+        "Intern opplæringspakke."
+      ],
+      "decision": "Bygg en modell som både kan levere spesialistoppdrag og løfte kapasiteten i resten av organisasjonen."
+    },
+    {
+      "id": "mandate-profitability",
+      "icon": "◌",
+      "tag": "Økonomi",
+      "category": "KPI",
+      "status": "Oppstartskrav",
+      "title": "Lavere profittkrav, men hardere krav til aktivitet",
+      "summary": "Lavere margin må kompenseres med tydelige krav til salgsaktivitet, leveranseutvikling og markedstraction.",
+      "purpose": "Et oppstartsmandat bør ikke tolkes som fritak fra styring. Poenget er at satsningen må styres etter riktige indikatorer i oppstartsfasen. Negativt resultat kan aksepteres i en kort periode dersom det gir dokumenterbar kapabilitetsbygging, salgsaktivitet og kundeinteresse.",
+      "includes": [
+        "0–6 måneder: negativt resultat kan aksepteres dersom pipeline, metodeverk og pilotkunder etableres.",
+        "6–12 måneder: betalte piloter og tydelig vei mot break-even i leveranseaktivitet.",
+        "12–18 måneder: krav om standardiserte leveranser, økende faktureringsgrad og positivt bidrag.",
+        "Etter mandatperioden: ordinær lønnsomhetsstyring eller beslutning om justert modell."
+      ],
+      "outputs": [
+        "Fasebaserte økonomiske KPI-er.",
+        "Pipeline- og tilbudsrapportering.",
+        "Måling av gjenbrukbare leveranser.",
+        "Plan for normalisert margin."
+      ],
+      "decision": "Aksepter lavere margin kun når satsningen samtidig dokumenterer høy fremdrift og konkret markedsverdi."
+    },
+    {
+      "id": "mandate-kpi",
+      "icon": "✓",
+      "tag": "KPI",
+      "category": "Styring",
+      "status": "Måles månedlig",
+      "title": "KPI-er og rapportering",
+      "summary": "Styring bør kombinere økonomi, marked, leveransekvalitet, kompetanse og intern forankring.",
+      "purpose": "KPI-ene må gjøre det mulig å se om satsningen faktisk bygger verdi. Derfor bør rapporteringen inkludere mer enn timer og resultat. Den bør også vise antall kvalifiserte leads, tilbud, pilotprosjekter, kundetilbakemeldinger, metodeverksleveranser, rekruttering og intern bruk av tjenestene.",
+      "includes": [
+        "Marked: leads, tilbud, hit-rate, rammeavtaler, strategiske kundemøter og pilotpipeline.",
+        "Leveranse: faktureringsgrad, gjenbruk av metodikk, kvalitet, kundetilfredshet og leveransekapasitet.",
+        "Kompetanse: sertifiseringer, seniorbemanning, intern opplæring og faglig dekning.",
+        "Styring: månedlig status, risikoliste, beslutningsbehov og avvik fra mandat."
+      ],
+      "outputs": [
+        "Månedlig dashboard.",
+        "Kvartalsvis ledelsesrapport.",
+        "Risiko- og avvikslogg.",
+        "Beslutningsliste for styringsgruppe."
+      ],
+      "decision": "Rapporter på fremdrift som bygger fremtidig lønnsomhet, ikke bare kortsiktig produksjon."
+    },
+    {
+      "id": "mandate-text",
+      "icon": "✦",
+      "tag": "Mandattekst",
+      "category": "Formulering",
+      "status": "Klar til bruk",
+      "title": "Foreslått mandattekst",
+      "summary": "En ferdig formulering som kan brukes som utgangspunkt for intern beslutning.",
+      "purpose": "Norconsult etablerer en midlertidig strategisk task force for OT, cyber, nettverkssikkerhet, automasjon og AI governance med et oppstartsmandat på 18 måneder. Formålet er å bygge et nasjonalt leveransemiljø, utvikle standardiserte tjenester, etablere markedsposisjon og støtte markedsområdene i prosjekter som omfattes av økte krav til digital sikkerhet, robusthet og sikker drift av tekniske anlegg.",
+      "includes": [
+        "Task force gis ansvar for felles tjenesteutvikling, metodeverk, salgsstøtte, kvalitetskontroll og gjennomføring av prioriterte pilot- og kundeoppdrag.",
+        "Satsningen gis lavere profittkrav i etableringsfasen, men må rapportere månedlig på pipeline, leveranseutvikling, kompetansebygging, pilotaktivitet og økonomisk utvikling.",
+        "Mandatet skal sikre at Norconsult kan opptre samlet i markedet, samtidig som eksisterende markedsområder beholder kundeansvar og involveres i leveranser.",
+        "Etter 18 måneder legges det frem beslutningsgrunnlag for videreføring, justering eller integrering i permanent organisasjonsmodell."
+      ],
+      "outputs": [
+        "Beslutningsklart mandatavsnitt.",
+        "Avklarte forventninger til mandatperioden.",
+        "Grunnlag for styringsgruppebehandling.",
+        "Tekst som kan løftes inn i notat eller presentasjon."
+      ],
+      "decision": "Bruk teksten som basis, men legg til navn på sponsor, styringsgruppe, økonomiramme og beslutningsdato før endelig behandling."
+    }
+  ]
+};
+  </script>
+  <script src="./app.js?v=8" defer></script>
+</body>
+</html>

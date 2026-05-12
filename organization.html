@@ -1,1 +1,179 @@
-<!doctype html><html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>delivery.html</title><link rel="stylesheet" href="assets/styles.css"></head><body><header class="site-header"><nav class="nav"><a class="brand" href="index.html">Norconsult OT Cyber AI</a><div class="nav-links"><a href="roadmap.html">Roadmap</a><a href="delivery.html">Leveransemodell</a><a href="productization.html">Produktifisering</a><a href="services.html">Tjenester</a><a href="alternatives.html">Alternativer</a><a href="business-case.html">Business case</a><a href="topics.html">Flere temaer</a></div></nav></header><main><section class="page-hero"><div class="eyebrow">Leveransemodell</div><h1>Tre kanaler for å levere tjenestene</h1><p>Kraftsentret må kunne levere i prosjekter, som intern funksjon og som direkte rådgiver mot kunde.</p></section><section class="section"><div class="grid-3"><article class="info-card"><div class="tag">1</div><h3>I Norconsult-prosjekter</h3><p>Integreres i prosjektløp for krav, design, leverandøroppfølging, dokumentasjon, FAT/SAT, testing og verifikasjon.</p></article><article class="info-card"><div class="tag">2</div><h3>Til organisasjonen internt</h3><p>Intern ekspertfunksjon for tilbud, design review, kundemøter, kravbibliotek, kvalitetssikring og metodeverk.</p></article><article class="info-card"><div class="tag">3</div><h3>Direkte rådgivertjenester</h3><p>Fastprisprodukter direkte til kommuner, offentlige virksomheter og bedrifter som må håndtere nye krav.</p></article></div></section><section class="section"><h2>Leveranseflyt</h2><div class="flow"><div><strong>1. Behov</strong><br><span class="muted">Kunde/prosjekt trenger samsvar, design eller verifikasjon.</span></div><div><strong>2. Produktvalg</strong><br><span class="muted">Velg standardpakke med tydelig scope.</span></div><div><strong>3. Fastpris</strong><br><span class="muted">Avklart pris, inngangsdata og leveranseformat.</span></div><div><strong>4. Leveranse</strong><br><span class="muted">Team leverer etter playbook og maler.</span></div><div><strong>5. Reinvestering</strong><br><span class="muted">Margin brukes til videre produktutvikling.</span></div></div></section></main><footer class="footer">Webutkast v5 • Produkt- og funksjonsorientert kraftsenter • 2026</footer></body></html>
+{
+  "summary": {
+    "yearFiveRevenue": "162,1 MNOK",
+    "accumulatedResult": "97,4 MNOK",
+    "breakEven": "År 2",
+    "yearFiveMargin": "32,6 %"
+  },
+  "financialRows": [
+    {
+      "year": "1",
+      "employees": "8",
+      "revenue": "11,9 MNOK",
+      "cost": "18,3 MNOK",
+      "result": "-6,4 MNOK",
+      "margin": "-53,8 %"
+    },
+    {
+      "year": "2",
+      "employees": "16",
+      "revenue": "33,3 MNOK",
+      "cost": "28,8 MNOK",
+      "result": "4,5 MNOK",
+      "margin": "13,5 %"
+    },
+    {
+      "year": "3",
+      "employees": "28",
+      "revenue": "66,1 MNOK",
+      "cost": "50,3 MNOK",
+      "result": "15,8 MNOK",
+      "margin": "23,9 %"
+    },
+    {
+      "year": "4",
+      "employees": "42",
+      "revenue": "106,3 MNOK",
+      "cost": "75,6 MNOK",
+      "result": "30,7 MNOK",
+      "margin": "28,9 %"
+    },
+    {
+      "year": "5",
+      "employees": "60",
+      "revenue": "162,1 MNOK",
+      "cost": "109,3 MNOK",
+      "result": "52,8 MNOK",
+      "margin": "32,6 %"
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "Konservativt",
+      "value": "35–45 MNOK",
+      "description": "Lavere hit-rate, tregere rekruttering og svakere intern bruk av tjenestene."
+    },
+    {
+      "name": "Basis",
+      "value": "97,4 MNOK",
+      "description": "Gradvis økt faktureringsgrad, repeterbare tjenester og moderat produktinntekt."
+    },
+    {
+      "name": "Offensivt",
+      "value": "150+ MNOK",
+      "description": "Sterk pipeline, rammeavtaler, høy intern etterspørsel og modne fastprisprodukter."
+    }
+  ],
+  "sections": [
+    {
+      "id": "bc-model",
+      "icon": "Σ",
+      "tag": "Modell",
+      "category": "Økonomi",
+      "status": "Basis",
+      "title": "Årsvis økonomisk modell",
+      "summary": "Viser mekanikken i basis-scenarioet for anbefalt kraftsentermodell.",
+      "purpose": "Modellen er ikke et budsjett, men et scenario som viser hvilke drivere som må styres: bemanning, faktureringsgrad, timepris, produktinntekt, overhead og oppstartsperiode.",
+      "kind": "financial-model",
+      "includes": [
+        "Negativt etableringsår er forventet ved aktiv investering i marked og metodeverk.",
+        "Break-even kommer når faktureringsgrad, gjenbruk og pipeline begynner å virke sammen.",
+        "År 4–5 er lønnsomheten drevet av skalerbar leveranse, ikke bare flere timer."
+      ],
+      "outputs": [
+        "Årsvis økonomitabell",
+        "Forutsetninger til videre kalibrering",
+        "Tallgrunnlag for ledelsesdialog"
+      ],
+      "decision": "Bruk modellen som styringshypotese og kalibrer den mot reelle timesatser, internkost og pipeline."
+    },
+    {
+      "id": "bc-assumptions",
+      "icon": "▦",
+      "tag": "Forutsetninger",
+      "category": "Økonomi",
+      "status": "Må valideres",
+      "title": "Viktigste forutsetninger",
+      "summary": "Caset avhenger av at organisasjonen faktisk bygger en repeterbar leveransemodell.",
+      "purpose": "Det økonomiske potensialet ligger i kombinasjonen av spesialistkompetanse og produktifisering. Dersom leveransene forblir personbaserte enkelttimer, faller mye av caset bort.",
+      "includes": [
+        "Timepris i basis: ca. 1 800 NOK/time.",
+        "Fakturerbarhet: 48 % i år 1 stigende til 72 % i år 5.",
+        "Arbeidstimer: ca. 1 725 timer per ansatt per år.",
+        "Intern kost, verktøy, sertifisering og overhead må kvalitetssikres."
+      ],
+      "outputs": [
+        "Forutsetningsliste",
+        "Kalibreringspunkter for økonomi",
+        "Eierskap til datagrunnlag"
+      ],
+      "decision": "Kvalitetssikre tallene før formell behandling, men ikke la presisjonsarbeidet stoppe strategisk beslutning."
+    },
+    {
+      "id": "bc-scenarios",
+      "icon": "↗",
+      "tag": "Scenario",
+      "category": "Beslutning",
+      "status": "Sammenligning",
+      "title": "Scenarioer for akkumulert resultat",
+      "summary": "Sammenligner konservativt, basis og offensivt potensial over fem år.",
+      "purpose": "Scenarioene viser at den største økonomiske forskjellen ikke bare kommer fra markedet, men fra gjennomføringsevne internt.",
+      "kind": "scenarios",
+      "includes": [
+        "Konservativt scenario viser hva som skjer ved svak intern mobilisering.",
+        "Basis forutsetter styrt oppstart og gradvis moden leveransemodell.",
+        "Offensivt scenario krever tydelig markedspush og høyere skalerbarhet."
+      ],
+      "outputs": [
+        "Scenariooversikt",
+        "Diskusjonsgrunnlag for risikovilje",
+        "Prioriterte styringsgrep"
+      ],
+      "decision": "Velg basis som styringsscenario, men etabler tiltak som gjør offensivt scenario mulig."
+    },
+    {
+      "id": "bc-risks",
+      "icon": "!",
+      "tag": "Risiko",
+      "category": "Styring",
+      "status": "Kritisk",
+      "title": "Hva kan ødelegge business caset?",
+      "summary": "Den største risikoen er en for svak organisering, ikke bare for lite marked.",
+      "purpose": "Business caset krever at task force får reell myndighet til å prioritere leveranser, utvikle metodeverk og kobles inn i relevante tilbud.",
+      "includes": [
+        "Fortsatt siloorganisering og intern kamp om timer.",
+        "Manglende inntektsdeling mellom markedsområder og task force.",
+        "For høyt profittkrav før marked og produkter er modne.",
+        "For svak seniorbemanning og for lite kommersiell ledelse."
+      ],
+      "outputs": [
+        "Risikoregister for satsningen",
+        "Tiltak for inntektsdeling",
+        "Krav til styringsgruppe"
+      ],
+      "decision": "Behandle organisasjonsrisiko som en hovedrisiko i caset og ikke som et sidepunkt."
+    },
+    {
+      "id": "bc-next",
+      "icon": "✓",
+      "tag": "Neste steg",
+      "category": "Beslutning",
+      "status": "Klar",
+      "title": "Anbefalt beslutning",
+      "summary": "Godkjenn en tidsavgrenset etableringsfase med lavere profittkrav og tydelige KPI-er.",
+      "purpose": "Et business case bør ikke bare ende i et tall. Det bør ende i en beslutning om mandat, bemanning, styring og hvilke første tjenester som skal utvikles.",
+      "includes": [
+        "18 måneders oppstartsmandat.",
+        "Fasebaserte KPI-er for pipeline, piloter, metodeverk og økonomi.",
+        "Felles prioritering av strategiske tilbud.",
+        "Krav om kvartalsvis ledelsesrapportering."
+      ],
+      "outputs": [
+        "Beslutningsnotat",
+        "Mandat og faseplan",
+        "Første produktkatalog"
+      ],
+      "decision": "Start kontrollert, men raskt. Venting øker sannsynligheten for at markedet og posisjonen tas av andre."
+    }
+  ]
+}
